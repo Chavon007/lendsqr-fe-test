@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap");
+
+$active-color: #5718ff;
+$loan-color: #f55f44;
+$savings-color: #ff3366;
+$user-color: #df18ff;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Work Sans", sans-serif;
+}
+
+.user-card {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  width: 80%;
+  margin: 30px auto;
+
+  &__item {
+    width: 240px;
+    height: 160px;
+    border: 1px solid #213f7d0f;
+    padding: 30px 30px;
+  }
+
+  &__image {
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 100%;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  &__title {
+    width: 153px;
+    height: 16px;
+    font-family: "Work Sans", sans-serif;
+    color: #545f7d;
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+
+  &__amount {
+    width: 90px;
+    height: 28px;
+    font-family: "Work Sans", sans-serif;
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #213f7d;
+  }
+}

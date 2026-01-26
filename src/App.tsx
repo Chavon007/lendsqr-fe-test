@@ -8,12 +8,13 @@ import {
   Navigate,
 } from "react-router-dom";
 // import Header from "./components/header";
+import UserCard from "./components/card";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<SiderBar/>} />
+        <Route path="/" element={<UserCard/>} />
       </Routes>
     </Router>
   );
