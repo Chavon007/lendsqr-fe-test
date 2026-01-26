@@ -1,0 +1,161 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap");
+
+$primary-color: #213f7d;
+$secondary-color: #545f7d;
+$accent-color: #39cdcc;
+$border-color: #545f7d26;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Work Sans", sans-serif;
+}
+
+.sidebar {
+  width: 283px;
+  height: 1574px;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin: 20px 10px;
+    padding: 10px;
+    // background-color: red;
+  }
+
+  &__switch {
+    width: 206px;
+    height: 19px;
+    display: flex;
+    // align-self: center;
+    text-decoration: none;
+    gap: 10px;
+    // background-color: red;
+  }
+
+  &__switch-icon {
+    font-size: 16px;
+    color: $primary-color;
+  }
+
+  &__switch-text {
+    display: flex;
+    align-self: center;
+    width: 180px;
+    gap: 10px;
+    height: 19px;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: $primary-color;
+  }
+
+  &__switch-dropdown {
+    width: 6.57px;
+    height: 11.21px;
+    color: $primary-color;
+  }
+
+  &__dashboard {
+    width: 110px;
+    height: 19px;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    text-decoration: none;
+  }
+
+  &__dashboard-icon {
+    font-size: 16px;
+    height: 7.55px;
+    color: $primary-color;
+  }
+
+  &__dashboard-text {
+    width: 84px;
+    height: 19px;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: $primary-color;
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px 0;
+  }
+
+  &__section-title {
+    width: 75px;
+    height: 14px;
+    font-family: "Work Sans", sans-serif;
+    font-size: 12px;
+    color: $primary-color;
+  }
+
+  &__item {
+    text-decoration: none;
+    display: flex;
+    width: 173px;
+    height: 19px;
+    gap: 15px;
+    padding: 10px 0;
+    align-items: center;
+  }
+
+  &__item-icon {
+    font-size: 9.6px;
+    height: 11.2px;
+    color: $primary-color;
+  }
+
+  &__item-text {
+    width: 147px;
+    // background: red;
+    height: 19px;
+    font-size: 16px;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 400;
+    color: $primary-color;
+  }
+  &__footer {
+    width: 238px;
+    border-top: 1px solid $primary-color;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+  &__logout {
+    display: flex;
+    align-content: center;
+    gap: 5px;
+    text-decoration: none;
+    width: 80px;
+  }
+  &__logout-icon {
+    width: 11px;
+    height: 10.92px;
+    color: $primary-color;
+  }
+  &__logout-text {
+    width: 54px;
+    height: 19px;
+    font-family: "Work Sans" sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: $primary-color;
+  }
+  &__version {
+    width: 32px;
+    height: 14px;
+    font-family: "Work Sans" sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    color: $primary-color;
+  }
+}

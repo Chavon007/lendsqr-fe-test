@@ -1,0 +1,170 @@
+$primary-color: #213f7d;
+$accent-color: #39cdcc;
+$secondary-color: #545f7d;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  max-width: 1440px;
+  width: 100%;
+  padding: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+//   box-shadow: #000;
+  background-color: #ffffff;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  max-width: 173.76px;
+  height: 36px;
+
+  &__icon {
+    width: 24.75px;
+    height: 25px;
+    object-fit: contain;
+  }
+
+  &__lendsqr {
+    width: 138.44px;
+    height: 36px;
+    object-fit: contain;
+  }
+}
+
+.search {
+  width: 400px;
+  height: 40px;
+
+  &__border {
+    width: 400px;
+    height: 40px;
+
+    border: 1px solid $primary-color;
+    border-radius: 8px;
+    opacity: 0.2;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: #ffffff;
+  }
+
+  &__input {
+    width: 134px;
+    height: 16px;
+    margin-left: 12px;
+
+    border: none;
+    outline: none;
+    opacity: 0.7;
+
+    &::placeholder {
+      font-size: 14px;
+      font-weight: 400;
+      color: $secondary-color;
+    }
+  }
+
+  &__icon {
+    width: 56px;
+    height: 40px;
+
+    background-color: $accent-color;
+    border-radius: 0 8px 8px 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__icon1 {
+    width: 13.97px;
+    height: 14px;
+    color: #ffffff;
+  }
+}
+
+.notification {
+  width: 40%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  &__doc {
+    width: 37px;
+    height: 19px;
+  }
+
+  &__link {
+    font-family: roboto;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+    text-decoration: underline;
+    color: $primary-color;
+  }
+
+  &__bell {
+    width: 26px;
+    height: 26px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__bell1 {
+    width: 19.67px;
+    height: 22.74px;
+    color: $primary-color;
+  }
+
+  &__profile1 {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__image {
+    width: 48px;
+    height: 48px;
+  }
+  &__image1 {
+    width: 48px;
+    height: 48px;
+    border-radius: 100px;
+    background-color: #c4c4c4;
+  }
+
+  &__name {
+    display: flex;
+    align-self: center;
+    gap: 6px;
+  }
+  &__name1 {
+    width: 58px;
+    height: 19px;
+    font-family: sans-serif;
+    font-weight: 500;
+    color: $primary-color;
+    line-height: 100%;
+    letter-spacing: 0px;
+  }
+  &__name2 {
+    width: 7.34px;
+    height: 4.15px;
+    color: $primary-color;
+  }
+}
