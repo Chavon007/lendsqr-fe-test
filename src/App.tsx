@@ -1,6 +1,7 @@
 import "./App.css";
 // import Login from "./pages/login";
 import SiderBar from "./components/sidebar";
+import UserTable from "./components/userinfo";
 import {
   Route,
   BrowserRouter as Router,
@@ -14,7 +15,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<UserCard/>} />
+        <Route path="/" element={<UserTable />} />
       </Routes>
     </Router>
   );

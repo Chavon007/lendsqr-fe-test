@@ -1,0 +1,287 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap");
+
+$primary-color: #213f7d;
+$accent-color: #39cdcc;
+$secondary-color: #545f7d;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Work Sans", sans-serif;
+}
+
+.user-table {
+  width: 100%;
+  height: auto;
+  position: relative;
+
+  &__container {
+    width: 1037px;
+    height: auto;
+    border: 1px solid #213f7d0f;
+    background: #ffffff;
+    overflow-x: auto;
+    margin: 0 auto;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  &__thead {
+    width: 977px;
+  }
+
+  &__row {
+    border-bottom: 1px solid #213f7d1a;
+  }
+
+  &__header {
+    width: 154px;
+    padding: 20px 15px;
+    text-align: left;
+    vertical-align: middle;
+  }
+
+  &__header-text {
+    width: 98px;
+    height: 15px;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: $secondary-color;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-right: 8px;
+  }
+
+  &__filter-btn {
+    width: 16px;
+    height: 16px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    vertical-align: middle;
+
+    svg {
+      width: 16px;
+      height: 10.67px;
+      color: $secondary-color;
+    }
+  }
+
+  &__tbody {
+    background: #ffffff;
+  }
+
+  &__cell {
+    width: 154px;
+    height: auto;
+    padding: 20px 15px;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: $secondary-color;
+  }
+
+  &__pagination {
+    width: 1037px;
+    height: 30px;
+    margin: 25px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__pagination-info {
+    display: flex;
+
+    width: 227px;
+    gap: 20px;
+    align-items: center;
+  }
+  &__pagination-text {
+    width: 58px;
+    height: 16px;
+    font-family: "Work Sans" sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: $secondary-color;
+    line-height: 1;
+    letter-spacing: 0;
+  }
+  &__pagination-text1 {
+    width: 105px;
+    height: 16px;
+    font-family: "Work Sans" sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: $secondary-color;
+    line-height: 1;
+    letter-spacing: 0;
+  }
+  &__pagination-select {
+    width: 80px;
+
+    background-color: rgb(200, 200, 200);
+  }
+  &__pagination-option {
+    width: 24px;
+    font-weight: 500;
+    font-family: "Work Sans" sans-serif;
+    font-size: 14px;
+    line-height: 1;
+    letter-spacing: 0;
+    color: $primary-color;
+  }
+  &__pagination-icon {
+    width: 14px;
+  }
+
+  &__pagination-controls {
+    width: 262px;
+    height: 24px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 10px;
+  }
+  &__pagination-btn {
+    width: 24px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__pagination-btn-icon {
+    font-size: 6.57px;
+    color: $primary-color;
+  }
+  &__pagination-btn-num {
+    width: 7px;
+    font-family: "Work Sans" sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0;
+    color: $secondary-color;
+  }
+
+  &__filter-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+  }
+
+  &__filter {
+    width: 270px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 4px;
+    border: 1px solid #545f7d24;
+    background-color: #ffffff;
+    box-shadow: 3px 5px 20px 0px #0000000a;
+    padding: 30px 20px;
+    position: absolute;
+    top: 80px;
+    left: 120px;
+    z-index: 1000;
+  }
+  &__filter-field {
+    display: flex;
+    gap: 6px;
+    flex-direction: column;
+  }
+  &__filter-label {
+    width: 103px;
+    height: 16px;
+    font-family: "Work Sans" sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 1;
+    color: $secondary-color;
+  }
+
+  &__filter-input {
+    width: 230px;
+    border: 1px solid #213f7d33;
+    height: 40px;
+    border-radius: 8px;
+    padding: 0 16px;
+
+    &::placeholder {
+      font-size: 14px;
+      font-family: "Work Sans" sans-serif;
+      line-height: 1;
+      letter-spacing: 0;
+      color: #545f7d;
+    }
+  }
+  &__filter-select {
+    width: 230px;
+    border: 1px solid #213f7d33;
+    height: 40px;
+    border-radius: 8px;
+    padding: 0 16px;
+    font-size: 14px;
+    font-family: "Work Sans" sans-serif;
+    color: $secondary-color;
+    background-color: #ffffff;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 16px;
+  }
+  &__filter-actions {
+    display: flex;
+    gap: 14px;
+    margin-top: 10px;
+  }
+  &__filter-reset {
+    width: 98px;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid $secondary-color;
+    background-color: #ffffff;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+    font-family: "Work Sans" sans-serif;
+    font-weight: 600;
+    color: $secondary-color;
+
+    &:hover {
+      background: #f5f5f5;
+    }
+  }
+  &__filter-submit {
+    width: 98px;
+    height: 40px;
+    border-radius: 8px;
+    border: none;
+    background-color: $accent-color;
+    text-align: center;
+    font-size: 14px;
+    font-family: "Work Sans" sans-serif;
+    font-weight: 600;
+    color: #ffffff;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #2eb8b7;
+    }
+  }
+}
