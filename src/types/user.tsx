@@ -5,8 +5,10 @@ export interface User {
   fullName: string;
   username: string;
   email: string;
+  organization: string;
   phoneNumber: string;
   bvn: string;
+  dateJoined: string;
   status: UserStatus;
   tier: 1 | 2 | 3;
 
