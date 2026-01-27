@@ -3,8 +3,9 @@ import { fetchUsers } from "../services/userServices";
 import { IoFilterOutline } from "react-icons/io5";
 import { useState, useEffect } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 import { GrFormPrevious, GrFormNext } from "react-icons/gr";
-import "../styles/userTable.scss"
+import "../styles/userTable.scss";
 const headers = [
   "Organization",
   "Username",
@@ -51,6 +52,7 @@ const filterFields = [
 ];
 
 function UserTable() {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [users, setUsers] = useState<User[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -86,39 +88,51 @@ function UserTable() {
     <div className="user-table">
       <div className="user-table__container">
         <table className="user-table__table">
-        <thead className="user-table__thead">
-          <tr className="user-table__row">
-            {headers.map((head) => (
-              <th key={head} className="user-table__header">
-                <span className="user-table__header-text">{head}</span>
-                <button className="user-table__filter-btn" onClick={() => setShowFilterModal(true)}>
-                  <IoFilterOutline />
-                </button>
-              </th>
-            ))}
-          </tr>
-        </thead>
-
-        <tbody className="user-table__tbody">
-          {currentUsers.map((user) => (
-            <tr key={user.id} className="user-table__row">
-              <td className="user-table__cell">{user.organization}</td>
-              <td className="user-table__cell">{user.username}</td>
-              <td className="user-table__cell">{user.email}</td>
-              <td className="user-table__cell">{user.phoneNumber}</td>
-              <td className="user-table__cell">{user.dateJoined}</td>
-              <td className="user-table__cell">{user.status}</td>
+          <thead className="user-table__thead">
+            <tr className="user-table__row">
+              {headers.map((head) => (
+                <th key={head} className="user-table__header">
+                  <span className="user-table__header-text">{head}</span>
+                  <button
+                    className="user-table__filter-btn"
+                    onClick={() => setShowFilterModal(true)}
+                  >
+                    <IoFilterOutline />
+                  </button>
+                </th>
+              ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+
+          <tbody className="user-table__tbody">
+            {currentUsers.map((user) => (
+              <tr key={user.id} className="user-table__row" onClick={() => navigate(`/user/${user.id}`)} >
+                <td className="user-table__cell">{user.organization}</td>
+                <td className="user-table__cell">{user.username}</td>
+                <td className="user-table__cell">{user.email}</td>
+                <td className="user-table__cell">{user.phoneNumber}</td>
+                <td className="user-table__cell">{user.dateJoined}</td>
+                <td className="user-table__cell">{user.status}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
 
       <div className="user-table__pagination">
         <div className="user-table__pagination-info">
           <p className="user-table__pagination-text">Showing</p>
-          <select className="user-table__pagination-select" value={usersPerPage} disabled>
-            <option className="pagination-option">20 <span className="user-table__pagination-icon"><IoMdArrowDropdown/></span></option>
+          <select
+            className="user-table__pagination-select"
+            value={usersPerPage}
+            disabled
+          >
+            <option className="pagination-option">
+              20{" "}
+              <span className="user-table__pagination-icon">
+                <IoMdArrowDropdown />
+              </span>
+            </option>
           </select>
           <p className="user-table__pagination-text1">Out of {totalUser}</p>
         </div>
@@ -134,7 +148,11 @@ function UserTable() {
           {Array.from({ length: totalPages }, (_, i) => i + 1)
             .slice(0, 10)
             .map((page, index) => (
-              <p key={index} className="user-table__pagination-btn-num" onClick={() => setCurrentPage(page)}>
+              <p
+                key={index}
+                className="user-table__pagination-btn-num"
+                onClick={() => setCurrentPage(page)}
+              >
                 {page}
               </p>
             ))}
@@ -151,11 +169,19 @@ function UserTable() {
       {/* filter */}
 
       {showFilterModal && (
-        <div className="user-table__filter-overlay" onClick={() => setShowFilterModal(false)}>
-          <form className="user-table__filter" onClick={(e) => e.stopPropagation()}>
+        <div
+          className="user-table__filter-overlay"
+          onClick={() => setShowFilterModal(false)}
+        >
+          <form
+            className="user-table__filter"
+            onClick={(e) => e.stopPropagation()}
+          >
             {filterFields.map((field) => (
               <div key={field.name} className="user-table__filter-field">
-                <label className="user-table__filter-label">{field.label}</label>
+                <label className="user-table__filter-label">
+                  {field.label}
+                </label>
 
                 {field.fieldType === "input" && (
                   <input
@@ -167,7 +193,10 @@ function UserTable() {
                 )}
 
                 {field.fieldType === "select" && (
-                  <select className="user-table__filter-select" name={field.name}>
+                  <select
+                    className="user-table__filter-select"
+                    name={field.name}
+                  >
                     <option value=""> Select</option>
                     {field.options?.map((option) => (
                       <option key={option} value={option}>
@@ -180,8 +209,16 @@ function UserTable() {
             ))}
 
             <div className="user-table__filter-actions">
-              <button type="button" className="user-table__filter-reset" onClick={() => setShowFilterModal(false)}>Reset</button>
-              <button type="submit" className="user-table__filter-submit">Filter</button>
+              <button
+                type="button"
+                className="user-table__filter-reset"
+                onClick={() => setShowFilterModal(false)}
+              >
+                Reset
+              </button>
+              <button type="submit" className="user-table__filter-submit">
+                Filter
+              </button>
             </div>
           </form>
         </div>

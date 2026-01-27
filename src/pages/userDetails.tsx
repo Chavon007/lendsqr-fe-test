@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+
+
 const General = () => <div>General page</div>;
 const Documents = () => <div>Document page</div>;
 const Bank = () => <div>Bank Page</div>;

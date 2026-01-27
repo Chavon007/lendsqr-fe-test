@@ -8,6 +8,7 @@ export interface User {
   organization: string;
   phoneNumber: string;
   bvn: string;
+  gender: string;
   dateJoined: string;
   status: UserStatus;
   tier: 1 | 2 | 3;

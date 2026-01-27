@@ -1,7 +1,7 @@
 import "./App.css";
 // import Login from "./pages/login";
 import SiderBar from "./components/sidebar";
-import UserTable from "./components/userinfo";
+import UserTable from "./components/userslist";
 import {
   Route,
   BrowserRouter as Router,
