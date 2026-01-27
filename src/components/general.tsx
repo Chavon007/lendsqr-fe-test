@@ -1,8 +1,8 @@
 import type { User } from "../types/user";
-import { fetchUsers } from "../services/userServices";
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { Value } from "sass";
+
+type GeneralProps = {
+  user: User;
+};
 
 const personalInfoFields = [
   { label: "Full name", value: (u: User) => u.fullName },
@@ -18,144 +18,81 @@ const personalInfoFields = [
   },
 ];
 
-const edu_employ = [
-  {
-    label: "Level and Education",
-    value: (u: User) => u.educationEmployment.level,
-  },
+const eduEmploy = [
+  { label: "Level of Education", value: (u: User) => u.educationEmployment.level },
   {
     label: "Employment status",
     value: (u: User) => u.educationEmployment.employmentStatus,
   },
-
   {
     label: "Sector of employment",
     value: (u: User) => u.educationEmployment.sector,
   },
-
   {
     label: "Duration of employment",
     value: (u: User) => u.educationEmployment.duration,
   },
-
   {
-    label: "office email",
+    label: "Office email",
     value: (u: User) => u.educationEmployment.officeEmail,
   },
-
   {
-    label: "monthly income",
+    label: "Monthly income",
     value: (u: User) => u.educationEmployment.monthlyIncome,
   },
-
   {
-    label: "loan repayment",
+    label: "Loan repayment",
     value: (u: User) => u.educationEmployment.loanRepayment,
   },
 ];
 
 const socials = [
-  {
-    label: "Twitter",
-    value: (u: User) => u.socials.twitter,
-  },
-  {
-    label: "Facebook",
-    value: (u: User) => u.socials.facebook,
-  },
-  {
-    label: "instagram",
-    value: (u: User) => u.socials.instagram,
-  },
+  { label: "Twitter", value: (u: User) => u.socials.twitter },
+  { label: "Facebook", value: (u: User) => u.socials.facebook },
+  { label: "Instagram", value: (u: User) => u.socials.instagram },
 ];
 
-const guarantor = [
-  { label: "Full name", key: "fullName" },
-  { label: "Phone number", key: "phoneNumber" },
-  { label: "Email address", key: "email" },
-  { label: "Relationship", key: "relationship" },
-] as const;
-
-function General() {
-  const { id } = useParams();
-  const [loading, setLoading] = useState(false);
-  const [userInfo, setUserInfo] = useState<User | null>(null);
-
-  useEffect(() => {
-    const getUserInfo = async () => {
-      setLoading(true);
-
-      try {
-        const data = await fetchUsers();
-        const allData = data.find((u) => u.id === id);
-        setUserInfo(allData || null);
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    getUserInfo();
-  }, [id]);
-
-  if (loading) {
-    return <p>Loading...</p>;
-  }
+function General({ user }: GeneralProps) {
   return (
-    <div>
-      <div>
-        <h4>Personal Information</h4>
-
-        <div>
-          {userInfo &&
-            personalInfoFields.map((p, index) => (
-              <div key={index}>
-                <h5>{p.label}</h5>
-                <p>{p.value(userInfo)}</p>
-              </div>
-            ))}
-        </div>
+    <div className="general">
+      <h4 className="general__section-title">Personal Information</h4>
+      <div className="general__section">
+        {personalInfoFields.map((p) => (
+          <div key={p.label} className="general__field">
+            <h5 className="general__label">{p.label}</h5>
+            <p className="general__value">{p.value(user)}</p>
+          </div>
+        ))}
       </div>
 
-      <div>
-        <h4>Education and Emploumet</h4>
-
-        <div>
-          {userInfo &&
-            edu_employ.map((ed, index) => (
-              <div key={index}>
-                <h5>{ed.label}</h5>
-                <p>{ed.value(userInfo)}</p>
-              </div>
-            ))}
-        </div>
+      <h4 className="general__section-title">Education and Employment</h4>
+      <div className="general__section">
+        {eduEmploy.map((e) => (
+          <div key={e.label} className="general__field">
+            <h5 className="general__label">{e.label}</h5>
+            <p className="general__value">{e.value(user)}</p>
+          </div>
+        ))}
       </div>
 
-      <div>
-        <h4>Socials</h4>
-
-        <div>
-          {userInfo &&
-            socials.map((s, index) => (
-              <div key={index}>
-                <h5>{s.label}</h5>
-                <p>{s.value(userInfo)}</p>
-              </div>
-            ))}
-        </div>
+      <h4 className="general__section-title">Socials</h4>
+      <div className="general__section">
+        {socials.map((s) => (
+          <div key={s.label} className="general__field">
+            <h5 className="general__label">{s.label}</h5>
+            <p className="general__value">{s.value(user)}</p>
+          </div>
+        ))}
       </div>
 
-      <div>
-        <h4>Guarantor</h4>
-
-        {userInfo?.guarantors.map((g, index) => (
-          <div key={index}>
-            {guarantor.map((gs, idx) => (
-              <div key={idx}>
-                <h5>{gs.label}</h5>
-                <p>{g[gs.key]}</p>
-              </div>
-            ))}
+      <h4 className="general__section-title">Guarantors</h4>
+      <div className="general__guarantors">
+        {user.guarantors.map((g, index) => (
+          <div key={index} className="general__guarantor">
+            <p className="general__guarantor-name">{g.fullName}</p>
+            <p className="general__guarantor-phone">{g.phoneNumber}</p>
+            <p className="general__guarantor-email">{g.email}</p>
+            <p className="general__guarantor-relationship">{g.relationship}</p>
           </div>
         ))}
       </div>

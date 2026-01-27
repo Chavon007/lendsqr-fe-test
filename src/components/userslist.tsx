@@ -51,7 +51,7 @@ const filterFields = [
   },
 ];
 
-function UserTable() {
+function Users() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [users, setUsers] = useState<User[]>([]);
@@ -106,7 +106,11 @@ function UserTable() {
 
           <tbody className="user-table__tbody">
             {currentUsers.map((user) => (
-              <tr key={user.id} className="user-table__row" onClick={() => navigate(`/user/${user.id}`)} >
+              <tr
+                key={user.id}
+                className="user-table__row"
+                onClick={() => navigate(`/user/${user.id}`)}
+              >
                 <td className="user-table__cell">{user.organization}</td>
                 <td className="user-table__cell">{user.username}</td>
                 <td className="user-table__cell">{user.email}</td>
@@ -127,12 +131,12 @@ function UserTable() {
             value={usersPerPage}
             disabled
           >
-            <option className="pagination-option">
+            <option className="pagination-option" value={20}>
               20{" "}
-              <span className="user-table__pagination-icon">
-                <IoMdArrowDropdown />
-              </span>
             </option>
+            <span className="user-table__pagination-icon">
+              <IoMdArrowDropdown />
+            </span>
           </select>
           <p className="user-table__pagination-text1">Out of {totalUser}</p>
         </div>
@@ -226,4 +230,4 @@ function UserTable() {
     </div>
   );
 }
-export default UserTable;
+export default Users;
