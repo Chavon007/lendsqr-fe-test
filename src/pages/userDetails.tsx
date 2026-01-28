@@ -103,7 +103,7 @@ function UserDetails() {
               key={t}
               onClick={() => setActiveTab(t)}
               className={`user-details__tab ${
-                activeTab === t ? "user-details__tab--active" : ""
+                activeTab === t ? "user-details__tab--active" : "user-details__tab--noactive"
               }`}
             >
               {t}

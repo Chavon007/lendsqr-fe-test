@@ -110,6 +110,7 @@ $secondary-color: #545f7d;
     border: 1px solid #213f7d0f;
     background-color: #ffffff;
     display: flex;
+    flex: 1;
     flex-direction: column;
     box-shadow: 3px 5px 20px 0px #0000000a;
     padding: 10px 30px;
@@ -121,6 +122,7 @@ $secondary-color: #545f7d;
     border: 0px solid $secondary-color;
     display: flex;
     align-items: center;
+    gap: 70px;
     justify-content: space-between;
     padding: 20px;
   }
@@ -172,9 +174,17 @@ $secondary-color: #545f7d;
     color: $primary-color;
   }
   &__tier {
+    // background: red;
     width: 73px;
     height: 42px;
-    padding: 10px;
+    padding: 0 70px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+    border-left: 1px solid $secondary-color;
+    border-right: 1px solid $secondary-color;
   }
   &__tier-label {
     font-family: "Work Sans" sans-serif;
@@ -226,5 +236,37 @@ $secondary-color: #545f7d;
     color: $primary-color;
     width: 157px;
     height: 14px;
+  }
+  &__tabs {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    width: 965px;
+  }
+  &__tab {
+    width: 170px;
+    height: 29px;
+  }
+  &__tab--active {
+    width: 120px;
+    height: 19px;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: "Work Sans" sans-serif;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 1;
+    color: $accent-color;
+  }
+  &__tab--noactive {
+    width: 130px;
+    height: 19px;
+    font-size: 16px;
+    font-family: "Work Sans" sans-serif;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0;
+    text-align: center;
+    color: #000000cc;
   }
 }
