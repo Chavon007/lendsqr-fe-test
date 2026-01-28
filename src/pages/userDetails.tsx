@@ -2,6 +2,9 @@ import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 import General from "../components/general";
 import { useUser } from "../hooks/userDetails";
+import "../styles/useDetails.scss";
+import { IoIosArrowRoundBack } from "react-icons/io";
+import { CgProfile } from "react-icons/cg";
 
 // import Bank from "../components/bank";
 // import Documents from "../components/documents";
@@ -30,51 +33,83 @@ function UserDetails() {
     <div className="user-details">
       {/* Back */}
       <Link to="/" className="user-details__back">
-        Back to users
+        <span className="user-details__icon">
+          <IoIosArrowRoundBack />
+        </span>
+        <span className="user-details__text">Back to users</span>
       </Link>
 
       {/* Header */}
       <div className="user-details__header">
-        <h3 className="user-details__title">User Details</h3>
-        <button className="user-details__button user-details__button--blacklist">
-          Blacklist User
-        </button>
-        <button className="user-details__button user-details__button--activate">
-          Activate User
-        </button>
+        <div className="user-details__title">
+          {" "}
+          <h3 className="user-details__text1">User Details</h3>
+        </div>
+
+        <div className="user-details__button">
+          <button className=" user-details__button--blacklist">
+            Blacklist User
+          </button>
+          <button className=" user-details__button--activate">
+            Activate User
+          </button>
+        </div>
       </div>
 
       {/* User summary */}
       <div className="user-details__summary">
-        <h4 className="user-details__name">{user.fullName}</h4>
-        <small className="user-details__id">{user.id}</small>
+        <div className="user-details__pro">
+          <div className="user-details__pro1">
+            <div className="user-details__image">
+              <CgProfile className="user-details__image1" />
+            </div>
+            <div className="user-details__name1">
+              <h4 className="user-details__name">{user.fullName}</h4>
+              <small className="user-details__id">{user.id.slice(-15)}</small>
+            </div>
+          </div>
 
-        <div className="user-details__tier">
-          <h6 className="user-details__tier-label">User Tier</h6>
-          <p className="user-details__tier-value">{user.tier}</p>
+          <div className="user-details__tier">
+            <h6 className="user-details__tier-label">User Tier</h6>
+
+            <p className="user-details__tier-value">
+              {[1, 2, 3].map((star) => (
+                <span
+                  key={star}
+                  className={
+                    star <= user.tier
+                      ? "user-details__tier-star user-details__tier-star--active"
+                      : "user-details__tier-star user-details__tier-star--inactive"
+                  }
+                >
+                  ⭐
+                </span>
+              ))}
+            </p>
+          </div>
+
+          <div className="user-details__account">
+            <h6 className="user-details__balance">{user.accountBalance}</h6>
+            <p className="user-details__account-info">
+              {user.accountNumber}/{user.bankName}
+            </p>
+          </div>
         </div>
 
-        <div className="user-details__account">
-          <h6 className="user-details__balance">{user.accountBalance}</h6>
-          <p className="user-details__account-info">
-            {user.accountNumber}/{user.bankName}
-          </p>
+        {/* Tabs */}
+        <div className="user-details__tabs">
+          {tabs.map((t) => (
+            <p
+              key={t}
+              onClick={() => setActiveTab(t)}
+              className={`user-details__tab ${
+                activeTab === t ? "user-details__tab--active" : ""
+              }`}
+            >
+              {t}
+            </p>
+          ))}
         </div>
-      </div>
-
-      {/* Tabs */}
-      <div className="user-details__tabs">
-        {tabs.map((t) => (
-          <p
-            key={t}
-            onClick={() => setActiveTab(t)}
-            className={`user-details__tab ${
-              activeTab === t ? "user-details__tab--active" : ""
-            }`}
-          >
-            {t}
-          </p>
-        ))}
       </div>
 
       {/* Tab content */}
