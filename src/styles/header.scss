@@ -1,0 +1,188 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap");
+
+$primary-color: #213f7d;
+$accent-color: #39cdcc;
+$secondary-color: #545f7d;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  width: 100%;
+  height: 100px;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  box-shadow: 3px 0px 20px 0px rgba(0, 0, 0, 0.04);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 173.76px;
+  height: 36px;
+
+  &__icon {
+    width: 24.75px;
+    height: 25px;
+    object-fit: contain;
+  }
+
+  &__lendsqr {
+    width: 138.44px;
+    height: 36px;
+    object-fit: contain;
+  }
+}
+
+.search {
+  flex: 1;
+  max-width: 400px;
+  margin: 0 40px;
+
+  &__border {
+    width: 100%;
+    height: 40px;
+    border: 1px solid rgba(33, 63, 125, 0.2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    overflow: hidden;
+  }
+
+  &__input {
+    flex: 1;
+    height: 100%;
+    padding: 0 20px;
+    border: none;
+    outline: none;
+    font-family: "Work Sans", sans-serif;
+    font-size: 14px;
+    color: $secondary-color;
+
+    &::placeholder {
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(84, 95, 125, 0.7);
+    }
+  }
+
+  &__icon {
+    width: 56px;
+    height: 40px;
+    background-color: $accent-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #2eb8b7;
+    }
+  }
+
+  &__icon1 {
+    width: 14px;
+    height: 14px;
+    color: #ffffff;
+  }
+}
+
+.notification {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+
+  &__doc {
+    height: 19px;
+  }
+
+  &__link {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    text-decoration: underline;
+    color: $primary-color;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__bell {
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+  }
+
+  &__bell1 {
+    width: 20px;
+    height: 23px;
+    color: $primary-color;
+  }
+
+  &__profile1 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+  }
+
+  &__image {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  &__image1 {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  &__text {
+    display: flex;
+    align-items: center;
+  }
+
+  &__name {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  &__name1 {
+    font-family: "Work Sans", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: $primary-color;
+  }
+
+  &__name2 {
+    display: flex;
+    align-items: center;
+    color: $accent-color;
+    font-size: 20px;
+  }
+}
