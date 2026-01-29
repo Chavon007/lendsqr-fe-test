@@ -22,19 +22,23 @@ $border-color: rgba(84, 95, 125, 0.15);
   overflow-y: auto;
 
   &__container {
+   
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    padding: 40px 30px 20px;
+    gap: 15px;
+    padding: 40px 10px 20px 10px;
   }
 
   &__switch {
+    //  background: red;
+     width: 206px;
     display: flex;
     align-items: center;
     text-decoration: none;
     gap: 10px;
     cursor: pointer;
+    margin-bottom: 30px;
     transition: opacity 0.2s;
 
     &:hover {
@@ -53,7 +57,7 @@ $border-color: rgba(84, 95, 125, 0.15);
     gap: 10px;
     font-family: "Work Sans", sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 15px;
     line-height: 19px;
     color: $primary-color;
   }

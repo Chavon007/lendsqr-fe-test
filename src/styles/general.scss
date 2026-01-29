@@ -13,13 +13,14 @@ $secondary-color: #545f7d;
 .general {
   max-width: 1037px;
   width: 100%;
+  background-color: #fff;
   min-height: 910px;
   height: auto;
   display: flex;
   flex-direction: column;
   gap: 30px;
-  margin-top: 50px;
-  padding: 30px 30px 0 30px;
+  margin: 50px 0;
+  padding: 30px 30px 30px 30px;
   border-radius: 4px;
   border: 1px solid #213f7d0f;
   box-shadow: 3px 5px 20px 0px #0000000a;

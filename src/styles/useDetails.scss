@@ -12,10 +12,14 @@ $secondary-color: #545f7d;
 }
 
 .user-details {
-  width: 100%;
-  max-width: 1037px;
+  // width: 100%;
   height: auto;
+  width: 900px;
+  
+  // background: red;
   margin: 0 auto;
+  position: relative;
+
   &__back {
     margin-top: 20px;
     width: 152px;
@@ -105,7 +109,7 @@ $secondary-color: #545f7d;
     }
   }
   &__summary {
-    width: 1037px;
+    max-width: 1037px;
     height: 210px;
     border-radius: 4px;
     border: 1px solid #213f7d0f;
@@ -242,7 +246,7 @@ $secondary-color: #545f7d;
     margin-top: auto;
     display: flex;
     justify-content: space-between;
-    width: 965px;
+    max-width: 965px;
   }
   &__tab {
     width: 170px;
