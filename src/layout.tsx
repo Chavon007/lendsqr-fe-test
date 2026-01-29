@@ -1,7 +1,7 @@
 import Header from "./components/header";
 import Sidebar from "./components/sidebar";
 import { Outlet } from "react-router-dom";
-import "../styles/layout.scss";
+import "../src/styles/layout.scss"
 
 function Layout() {
   return (

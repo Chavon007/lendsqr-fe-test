@@ -32,7 +32,7 @@ function UserDetails() {
   return (
     <div className="user-details">
       {/* Back */}
-      <Link to="/" className="user-details__back">
+      <Link to="/users" className="user-details__back">
         <span className="user-details__icon">
           <IoIosArrowRoundBack />
         </span>

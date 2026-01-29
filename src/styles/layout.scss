@@ -1,11 +1,18 @@
 * {
   margin: 0;
-  height: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
+.layout {
+  max-width: 1440px;
+  height: 900px;
+  display: flex;
+  flex-direction: column;
 
-.layout{
 
 
+  &__body{
+    display: flex;
+  }
 }
