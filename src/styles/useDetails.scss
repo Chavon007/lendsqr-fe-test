@@ -12,7 +12,8 @@ $secondary-color: #545f7d;
 }
 
 .user-details {
-  width: 1037px;
+  width: 100%;
+  max-width: 1037px;
   height: auto;
   margin: 0 auto;
   &__back {

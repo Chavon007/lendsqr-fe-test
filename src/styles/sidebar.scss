@@ -3,7 +3,7 @@
 $primary-color: #213f7d;
 $secondary-color: #545f7d;
 $accent-color: #39cdcc;
-$border-color: #545f7d26;
+$border-color: rgba(84, 95, 125, 0.15);
 
 * {
   margin: 0;
@@ -14,25 +14,32 @@ $border-color: #545f7d26;
 
 .sidebar {
   width: 283px;
-  height: 1574px;
+  height: 100%;
+  background: #ffffff;
+  box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
 
   &__container {
+    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 30px;
-    margin: 20px 10px;
-    padding: 10px;
-    // background-color: red;
+    padding: 40px 30px 20px;
   }
 
   &__switch {
-    width: 206px;
-    height: 19px;
     display: flex;
-    // align-self: center;
+    align-items: center;
     text-decoration: none;
     gap: 10px;
-    // background-color: red;
+    cursor: pointer;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 
   &__switch-icon {
@@ -42,120 +49,137 @@ $border-color: #545f7d26;
 
   &__switch-text {
     display: flex;
-    align-self: center;
-    width: 180px;
+    align-items: center;
     gap: 10px;
-    height: 19px;
     font-family: "Work Sans", sans-serif;
     font-weight: 400;
     font-size: 16px;
+    line-height: 19px;
     color: $primary-color;
   }
 
   &__switch-dropdown {
-    width: 6.57px;
-    height: 11.21px;
-    color: $primary-color;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    color: $accent-color;
   }
 
   &__dashboard {
-    width: 110px;
-    height: 19px;
     display: flex;
-    justify-content: space-between;
-    align-content: center;
+    align-items: center;
     text-decoration: none;
+    gap: 10px;
+    padding: 10px 0;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 
   &__dashboard-icon {
     font-size: 16px;
-    height: 7.55px;
     color: $primary-color;
   }
 
   &__dashboard-text {
-    width: 84px;
-    height: 19px;
     font-family: "Work Sans", sans-serif;
     font-weight: 400;
     font-size: 16px;
+    line-height: 19px;
     color: $primary-color;
   }
 
   &__section {
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    padding: 20px 0;
+    gap: 10px;
   }
 
   &__section-title {
-    width: 75px;
-    height: 14px;
     font-family: "Work Sans", sans-serif;
     font-size: 12px;
-    color: $primary-color;
+    font-weight: 500;
+    line-height: 14px;
+    text-transform: uppercase;
+    color: $secondary-color;
+    margin-bottom: 10px;
   }
 
   &__item {
     text-decoration: none;
     display: flex;
-    width: 173px;
-    height: 19px;
-    gap: 15px;
-    padding: 10px 0;
     align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 
   &__item-icon {
-    font-size: 9.6px;
-    height: 11.2px;
-    color: $primary-color;
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    color: $secondary-color;
   }
 
   &__item-text {
-    width: 147px;
-    // background: red;
-    height: 19px;
     font-size: 16px;
     font-family: "Work Sans", sans-serif;
     font-weight: 400;
-    color: $primary-color;
+    line-height: 19px;
+    color: $secondary-color;
   }
+
   &__footer {
-    width: 238px;
-    border-top: 1px solid $primary-color;
+    border-top: 1px solid $border-color;
     padding: 30px;
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 40px;
   }
+
   &__logout {
     display: flex;
-    align-content: center;
-    gap: 5px;
+    align-items: center;
+    gap: 10px;
     text-decoration: none;
-    width: 80px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
+
   &__logout-icon {
-    width: 11px;
-    height: 10.92px;
-    color: $primary-color;
+    font-size: 16px;
+    color: $secondary-color;
   }
+
   &__logout-text {
-    width: 54px;
-    height: 19px;
-    font-family: "Work Sans" sans-serif;
+    font-family: "Work Sans", sans-serif;
     font-weight: 400;
     font-size: 16px;
-    color: $primary-color;
+    line-height: 19px;
+    color: $secondary-color;
   }
+
   &__version {
-    width: 32px;
-    height: 14px;
-    font-family: "Work Sans" sans-serif;
+    text-align: center;
+  }
+
+  &__version-text {
+    font-family: "Work Sans", sans-serif;
     font-weight: 400;
     font-size: 12px;
-    color: $primary-color;
+    line-height: 14px;
+    color: $secondary-color;
   }
 }
