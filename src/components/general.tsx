@@ -56,7 +56,6 @@ const socials = [
   { label: "Instagram", value: (u: User) => u.socials.instagram },
 ];
 
-
 function General({ user }: GeneralProps) {
   return (
     <div className="general">

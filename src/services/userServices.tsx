@@ -20,3 +20,13 @@ export const fetchUsers = async (): Promise<User[]> => {
 export const getUserById = (users: User[], id: string): User | undefined => {
   return users.find(user => user.id === id);
 };
+
+
+export const saveUserToStorage = (user: User): void => {
+  localStorage.setItem(`user_${user.id}`, JSON.stringify(user));
+};
+
+export const getUserFromStorage = (id: string): User | null => {
+  const stored = localStorage.getItem(`user_${id}`);
+  return stored ? JSON.parse(stored) : null;
+};
