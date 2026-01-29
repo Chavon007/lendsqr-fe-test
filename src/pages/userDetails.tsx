@@ -6,11 +6,7 @@ import "../styles/useDetails.scss";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 
-// import Bank from "../components/bank";
-// import Documents from "../components/documents";
-// import Loan from "../components/loan";
-// import Savings from "../components/savings";
-// import AppSystem from "../components/appSystem";
+
 
 const tabs = [
   "General Details",
@@ -115,11 +111,7 @@ function UserDetails() {
       {/* Tab content */}
       <div className="user-details__content">
         {activeTab === "General Details" && <General user={user} />}
-        {activeTab === "Bank details" && <Bank user={user} />}
-        {activeTab === "Documents" && <Documents user={user} />}
-        {activeTab === "Loans" && <Loan user={user} />}
-        {activeTab === "Savings" && <Savings user={user} />}
-        {activeTab === "App and System" && <AppSystem user={user} />}
+       
       </div>
     </div>
   );

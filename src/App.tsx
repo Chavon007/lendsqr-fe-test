@@ -1,13 +1,8 @@
 import "./App.css";
 import Login from "./pages/login";
 import Layout from "./layout";
-import Users from "./components/userslist";
-import {
-  Route,
-  BrowserRouter as Router,
-  Routes,
-  Navigate,
-} from "react-router-dom";
+
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import UserDetails from "./pages/userDetails";
 import MainUsers from "./pages/users";
 
