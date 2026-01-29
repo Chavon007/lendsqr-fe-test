@@ -1,5 +1,6 @@
 import type {sideBarDetails} from "../types/sideBar"
 
+
 import { FiUsers } from "react-icons/fi";
 import { IoIosPeople } from "react-icons/io";
 import { TbMoneybag } from "react-icons/tb";
@@ -27,33 +28,32 @@ import {
   FaEnvelopeOpenText,
 } from "react-icons/fa";
 
- export const customers: sideBarDetails[] = [
-  { title: "Users", icon: FiUsers },
-  { title: "Guarantors", icon: IoIosPeople },
-  { title: "Loans", icon: TbMoneybag },
-  { title: "Decision Models", icon: FaRegHandshake },
-  { title: "Savings", icon: MdOutlineSavings },
-  { title: "Loan Requests", icon: FaHandHoldingUsd },
-  { title: "Whitelist", icon: FaUserCheck },
-  { title: "Karma", icon: FaUserTimes },
+export const customers: sideBarDetails[] = [
+  { title: "Users", icon: FiUsers, path: "/users" },
+  { title: "Guarantors", icon: IoIosPeople, path: "/guarantors" },
+  { title: "Loans", icon: TbMoneybag, path: "/loans" },
+  { title: "Decision Models", icon: FaRegHandshake, path: "/decision-models" },
+  { title: "Savings", icon: MdOutlineSavings, path: "/savings" },
+  { title: "Loan Requests", icon: FaHandHoldingUsd, path: "/loan-requests" },
+  { title: "Whitelist", icon: FaUserCheck, path: "/whitelist" },
+  { title: "Karma", icon: FaUserTimes, path: "/karma" },
 ];
 
- export const Businesses: sideBarDetails[] = [
-  { title: "Organization", icon: FaBuilding },
-  { title: "Loan Products", icon: FaHandHoldingUsd },
-  { title: "Savings Product", icon: FaPiggyBank },
-  { title: "Fees and Charges", icon: FaMoneyBillWave },
-  { title: "Transactions", icon: FaExchangeAlt },
-  { title: "Services", icon: FaServicestack },
-  { title: "Service Account", icon: FaUserCog },
-  { title: "Settlements", icon: FaDollarSign },
-  { title: "Reports", icon: FaChartBar },
+export const Businesses: sideBarDetails[] = [
+  { title: "Organization", icon: FaBuilding, path: "/organization" },
+  { title: "Loan Products", icon: FaHandHoldingUsd, path: "/loan-products" },
+  { title: "Savings Product", icon: FaPiggyBank, path: "/savings-product" },
+  { title: "Fees and Charges", icon: FaMoneyBillWave, path: "/fees-and-charges" },
+  { title: "Transactions", icon: FaExchangeAlt, path: "/transactions" },
+  { title: "Services", icon: FaServicestack, path: "/services" },
+  { title: "Service Account", icon: FaUserCog, path: "/service-account" },
+  { title: "Settlements", icon: FaDollarSign, path: "/settlements" },
+  { title: "Reports", icon: FaChartBar, path: "/reports" },
 ];
 
 export const settings: sideBarDetails[] = [
-  { title: "Preferences", icon: FaSlidersH },
-
-  { title: "Fees and Pricing", icon: FaMoneyCheckAlt },
-  { title: "Audit Logs", icon: FaFileAlt },
-  { title: "Systems Messages", icon: FaEnvelopeOpenText },
+  { title: "Preferences", icon: FaSlidersH, path: "/preferences" },
+  { title: "Fees and Pricing", icon: FaMoneyCheckAlt, path: "/fees-and-pricing" },
+  { title: "Audit Logs", icon: FaFileAlt, path: "/audit-logs" },
+  { title: "Systems Messages", icon: FaEnvelopeOpenText, path: "/systems-messages" },
 ];

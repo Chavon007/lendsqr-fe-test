@@ -4,6 +4,7 @@ import { MdOutlineLogout } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { RiArrowDropDownFill } from "react-icons/ri";
 import "../styles/sidebar.scss";
+
 function SiderBar() {
   return (
     <div className="sidebar">
@@ -19,8 +20,9 @@ function SiderBar() {
             </span>
           </h3>
         </Link>
+        
         {/* Dashboard */}
-        <Link to="" className="sidebar__dashboard">
+        <Link to="/dashboard" className="sidebar__dashboard">
           <p className="sidebar__dashboard-icon">
             <FaHome />
           </p>
@@ -28,12 +30,11 @@ function SiderBar() {
         </Link>
 
         {/* customers */}
-
         <div className="sidebar__section">
           <h4 className="sidebar__section-title">Customers</h4>
 
           {customers.map((c, index) => (
-            <Link to="" key={index} className="sidebar__item">
+            <Link to={c.path} key={index} className="sidebar__item">
               <p className="sidebar__item-icon">
                 <c.icon />
               </p>
@@ -43,11 +44,10 @@ function SiderBar() {
         </div>
 
         {/* businesses */}
-
         <div className="sidebar__section">
           <h4 className="sidebar__section-title">Businesses</h4>
           {Businesses.map((b, index) => (
-            <Link to="/" key={index} className="sidebar__item">
+            <Link to={b.path} key={index} className="sidebar__item">
               <p className="sidebar__item-icon">
                 <b.icon />
               </p>
@@ -57,12 +57,11 @@ function SiderBar() {
         </div>
 
         {/* settings */}
-
         <div className="sidebar__section">
           <h4 className="sidebar__section-title">Settings</h4>
 
           {settings.map((s, index) => (
-            <Link to="/" key={index} className="sidebar__item">
+            <Link to={s.path} key={index} className="sidebar__item">
               <p className="sidebar__item-icon">
                 <s.icon />
               </p>
@@ -71,9 +70,10 @@ function SiderBar() {
           ))}
         </div>
       </div>
+      
       {/* logout */}
       <div className="sidebar__footer">
-        <Link to="/" className="sidebar__logout">
+        <Link to="/logout" className="sidebar__logout">
           <p className="sidebar__logout-icon">
             <MdOutlineLogout />
           </p>
@@ -87,4 +87,5 @@ function SiderBar() {
     </div>
   );
 }
+
 export default SiderBar;

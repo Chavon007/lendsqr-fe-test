@@ -33,7 +33,7 @@ function Login() {
       localStorage.setItem("isAuthenticated", "true");
       setLoading(false);
       setTimeout(() => {
-        navigate("/dashboard");
+        navigate("/users");
       }, 1000);
     } catch (err) {
       setError("Can't login now");

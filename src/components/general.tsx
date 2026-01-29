@@ -1,4 +1,5 @@
 import type { User } from "../types/user";
+import "../styles/general.scss";
 
 type GeneralProps = {
   user: User;
@@ -19,7 +20,10 @@ const personalInfoFields = [
 ];
 
 const eduEmploy = [
-  { label: "Level of Education", value: (u: User) => u.educationEmployment.level },
+  {
+    label: "Level of Education",
+    value: (u: User) => u.educationEmployment.level,
+  },
   {
     label: "Employment status",
     value: (u: User) => u.educationEmployment.employmentStatus,
@@ -52,49 +56,73 @@ const socials = [
   { label: "Instagram", value: (u: User) => u.socials.instagram },
 ];
 
+
 function General({ user }: GeneralProps) {
   return (
     <div className="general">
-      <h4 className="general__section-title">Personal Information</h4>
-      <div className="general__section">
-        {personalInfoFields.map((p) => (
-          <div key={p.label} className="general__field">
-            <h5 className="general__label">{p.label}</h5>
-            <p className="general__value">{p.value(user)}</p>
-          </div>
-        ))}
+      <div className="general__section-section1">
+        <h4 className="general__section-title">Personal Information</h4>
+        <div className="general__section">
+          {personalInfoFields.map((p) => (
+            <div key={p.label} className="general__field">
+              <h5 className="general__label">{p.label}</h5>
+              <p className="general__value">{p.value(user)}</p>
+            </div>
+          ))}
+        </div>
       </div>
 
-      <h4 className="general__section-title">Education and Employment</h4>
-      <div className="general__section">
-        {eduEmploy.map((e) => (
-          <div key={e.label} className="general__field">
-            <h5 className="general__label">{e.label}</h5>
-            <p className="general__value">{e.value(user)}</p>
-          </div>
-        ))}
+      <div className="general__section-section1">
+        <h4 className="general__section-title">Education and Employment</h4>
+        <div className="general__section general__section--employment">
+          {eduEmploy.map((e) => (
+            <div key={e.label} className="general__field">
+              <h5 className="general__label">{e.label}</h5>
+              <p className="general__value">{e.value(user)}</p>
+            </div>
+          ))}
+        </div>
       </div>
 
-      <h4 className="general__section-title">Socials</h4>
-      <div className="general__section">
-        {socials.map((s) => (
-          <div key={s.label} className="general__field">
-            <h5 className="general__label">{s.label}</h5>
-            <p className="general__value">{s.value(user)}</p>
-          </div>
-        ))}
+      <div className="general__section-section1">
+        <h4 className="general__section-title">Socials</h4>
+        <div className="general__section general__section--socials">
+          {socials.map((s) => (
+            <div key={s.label} className="general__field">
+              <h5 className="general__label">{s.label}</h5>
+              <p className="general__value">{s.value(user)}</p>
+            </div>
+          ))}
+        </div>
       </div>
 
-      <h4 className="general__section-title">Guarantors</h4>
-      <div className="general__guarantors">
-        {user.guarantors.map((g, index) => (
-          <div key={index} className="general__guarantor">
-            <p className="general__guarantor-name">{g.fullName}</p>
-            <p className="general__guarantor-phone">{g.phoneNumber}</p>
-            <p className="general__guarantor-email">{g.email}</p>
-            <p className="general__guarantor-relationship">{g.relationship}</p>
-          </div>
-        ))}
+      <div className="general__section-section1">
+        <h4 className="general__section-title">Guarantors</h4>
+        <div className="general__guarantors">
+          {user.guarantors.map((g, index) => (
+            <div key={index} className="general__guarantor">
+              <div className="general__field">
+                <h6 className="general__label">Full name</h6>
+                <p className="general__value">{g.fullName}</p>
+              </div>
+
+              <div className="general__field">
+                <h6 className="general__label">Phone number</h6>
+                <p className="general__value">{g.phoneNumber}</p>
+              </div>
+
+              <div className="general__field">
+                <h6 className="general__label">Email Address</h6>
+                <p className="general__value">{g.email}</p>
+              </div>
+
+              <div className="general__field">
+                <h6 className="general__label">Relationship</h6>
+                <p className="general__value">{g.relationship}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

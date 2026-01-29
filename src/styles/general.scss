@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap");
+
+$primary-color: #213f7d;
+$accent-color: #39cdcc;
+$secondary-color: #545f7d;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.general {
+  max-width: 1037px;
+  width: 100%;
+  min-height: 910px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 50px;
+  padding: 30px 30px 0 30px;
+  border-radius: 4px;
+  border: 1px solid #213f7d0f;
+  box-shadow: 3px 5px 20px 0px #0000000a;
+
+  &__section-section1 {
+    max-width: 911px;
+    width: 100%;
+    min-height: 163px;
+    height: auto;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid $primary-color;
+
+    &:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+  }
+
+  &__section-title {
+    max-width: 217px;
+    width: 100%;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: $primary-color;
+  }
+
+  &__section {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 50px;
+    row-gap: 40px;
+
+    &--employment {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    &--socials {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+
+  &__field {
+    width: 100%;
+    min-height: 41px;
+    height: auto;
+  }
+
+  &__label {
+    max-width: 167px;
+    width: 100%;
+    font-size: 12px;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: $secondary-color;
+    margin-bottom: 8px;
+  }
+
+  &__value {
+    max-width: 300px;
+    font-family: "Work Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: $secondary-color;
+  }
+
+  &__guarantors {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  &__guarantor {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px;
+
+    padding-bottom: 30px;
+
+
+    border-bottom: 1px solid $primary-color;
+
+    &:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+  }
+}
