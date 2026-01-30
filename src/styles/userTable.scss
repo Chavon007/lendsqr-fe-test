@@ -23,7 +23,7 @@ $secondary-color: #545f7d;
     background: #ffffff;
     border-radius: 4px;
     box-shadow: 3px 5px 20px 0px #0000000a;
-    
+
     /* Scrollbar styling for webkit browsers (Chrome, Safari, Edge) */
     &::-webkit-scrollbar {
       height: 12px;
@@ -37,7 +37,7 @@ $secondary-color: #545f7d;
     &::-webkit-scrollbar-thumb {
       background: #888;
       border-radius: 4px;
-      
+
       &:hover {
         background: #555;
       }
@@ -115,6 +115,43 @@ $secondary-color: #545f7d;
     color: $secondary-color;
     overflow: hidden;
     text-overflow: ellipsis;
+
+    &.user-table__status {
+      padding: 0;
+    }
+  }
+
+  &__status {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 20px;
+    border-radius: 50px;
+    height: 32px;
+
+    &--active {
+      color: #39cd62;
+      background-color: #eff9f5;
+    }
+
+    &--inactive {
+      color: #545f7d;
+      background-color: #e6e6e6;
+    }
+
+    &--pending {
+      color: #e9b200;
+      background-color: #fff3cc;
+    }
+
+    &--blacklisted {
+      color: #e4033b;
+      background-color: #f9d6d9;
+    }
   }
 
   &__pagination {
@@ -370,16 +407,20 @@ $secondary-color: #545f7d;
       overflow-y: auto;
       max-height: 65vh;
       -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
-      
+
       /* Add gradient shadow on right to indicate more content */
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
         right: 0;
         bottom: 0;
         width: 30px;
-        background: linear-gradient(to left, rgba(255, 255, 255, 0.9), transparent);
+        background: linear-gradient(
+          to left,
+          rgba(255, 255, 255, 0.9),
+          transparent
+        );
         pointer-events: none; /* This ensures it doesn't block scrolling */
         z-index: 1;
       }
@@ -396,6 +437,18 @@ $secondary-color: #545f7d;
     &__cell {
       font-size: 13px;
       white-space: nowrap;
+    }
+    &__status {
+      width: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 5px;
+      font-weight: 500;
+      text-align: center;
+      margin-top: 15px;
+      border-radius: 50px;
+      height: 20px;
     }
 
     &__pagination {
@@ -420,7 +473,7 @@ $secondary-color: #545f7d;
 }
 
 /* Larger mobile devices / tablets */
-@media (max-width: 768px) {
+@media (min-width: 481px) and (max-width: 890px) {
   .user-table {
     width: 100%;
 
@@ -430,16 +483,20 @@ $secondary-color: #545f7d;
       overflow-y: auto;
       max-height: 70vh;
       -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
-      
+
       /* Add gradient shadow on right to indicate more content */
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
         right: 0;
         bottom: 0;
         width: 30px;
-        background: linear-gradient(to left, rgba(255, 255, 255, 0.9), transparent);
+        background: linear-gradient(
+          to left,
+          rgba(255, 255, 255, 0.9),
+          transparent
+        );
         pointer-events: none; /* This ensures it doesn't block scrolling */
         z-index: 1;
       }
@@ -474,29 +531,29 @@ $secondary-color: #545f7d;
 }
 
 /* Desktop */
-@media (min-width: 769px) {
-  .user-table {
-    &__container {
-      overflow: visible;
-      max-height: none;
-      
-      &::after {
-        display: none;
-      }
-    }
+// @media (min-width: 769px) {
+//   .user-table {
+//     &__container {
+//       overflow: visible;
+//       max-height: none;
 
-    &__table {
-      min-width: unset;
-    }
+//       &::after {
+//         display: none;
+//       }
+//     }
 
-    &__pagination {
-      flex-direction: row;
-      align-items: center;
-    }
+//     &__table {
+//       min-width: unset;
+//     }
 
-    &__filter {
-      left: 120px;
-      transform: none;
-    }
-  }
-}
+//     &__pagination {
+//       flex-direction: row;
+//       align-items: center;
+//     }
+
+//     &__filter {
+//       left: 120px;
+//       transform: none;
+//     }
+//   }
+// }

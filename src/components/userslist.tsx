@@ -4,7 +4,6 @@ import { IoFilterOutline } from "react-icons/io5";
 import { useState, useEffect } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
-
 import { GrFormPrevious, GrFormNext } from "react-icons/gr";
 import "../styles/userTable.scss";
 
@@ -80,7 +79,7 @@ function Users() {
     return <p>Loading users...</p>;
   }
 
-  // pagination
+  // Pagination
   const totalUser = users.length;
   const totalPages = Math.ceil(totalUser / usersPerPage);
   const startIndex = (currentPage - 1) * usersPerPage;
@@ -118,7 +117,11 @@ function Users() {
                 <td className="user-table__cell">{user.email}</td>
                 <td className="user-table__cell">{user.phoneNumber}</td>
                 <td className="user-table__cell">{user.dateJoined}</td>
-                <td className="user-table__cell">{user.status}</td>
+                <td
+                  className={`user-table__cell user-table__status user-table__status--${user.status.toLowerCase()}`}
+                >
+                  {user.status}
+                </td>
               </tr>
             ))}
           </tbody>
@@ -134,7 +137,7 @@ function Users() {
             disabled
           >
             <option className="pagination-option" value={20}>
-              20{" "}
+              20
             </option>
             <span className="user-table__pagination-icon">
               <IoMdArrowDropdown />
@@ -172,7 +175,7 @@ function Users() {
         </div>
       </div>
 
-      {/* filter */}
+      {/* Filter */}
       {showFilterModal && (
         <div
           className="user-table__filter-overlay"
@@ -231,4 +234,5 @@ function Users() {
     </div>
   );
 }
+
 export default Users;

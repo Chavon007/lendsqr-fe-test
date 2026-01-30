@@ -5,6 +5,7 @@ import { useUser } from "../hooks/userDetails";
 import "../styles/useDetails.scss";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 
 
@@ -68,20 +69,15 @@ function UserDetails() {
           <div className="user-details__tier">
             <h6 className="user-details__tier-label">User Tier</h6>
 
-            <p className="user-details__tier-value">
-              {[1, 2, 3].map((star) => (
-                <span
-                  key={star}
-                  className={
-                    star <= user.tier
-                      ? "user-details__tier-star user-details__tier-star--active"
-                      : "user-details__tier-star user-details__tier-star--inactive"
-                  }
-                >
-                  ⭐
-                </span>
-              ))}
-            </p>
+           <p className="user-details__tier-value">
+  {[1, 2, 3].map((star) =>
+    star <= user.tier ? (
+      <AiFillStar key={star} color="#e9b200" size={16} />
+    ) : (
+      <AiOutlineStar key={star} color="#e0e0e0" size={16} />
+    )
+  )}
+</p>
           </div>
 
           <div className="user-details__account">

@@ -440,10 +440,12 @@ $secondary-color: #545f7d;
 @media (min-width: 481px) and (max-width: 768px) {
   .user-details {
     padding: 0 20px;
+    // background: red;
 
     &__header {
       flex-wrap: wrap;
       gap: 15px;
+      //  background: red;
     }
 
     &__button {
@@ -480,23 +482,64 @@ $secondary-color: #545f7d;
 }
 
 /* Desktop */
-@media (min-width: 769px) {
+@media (min-width: 769px) and (max-width: 890px) {
   .user-details {
     &__button {
       width: auto;
       max-width: 360px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap; 
     }
 
+    // Profile section
     &__pro {
-      flex-wrap: nowrap;
+      display: flex;
+      flex-wrap: nowrap; // keep profile info in one line
+      gap: 20px;
+      align-items: center;
+      overflow: hidden;
     }
 
+    // Tier stars
     &__tier {
       padding: 0 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
+    // Tabs
     &__tabs {
-      overflow-x: visible;
+      display: flex; // allow gap to work
+      gap: 14px;
+      overflow-x: auto; // enable horizontal scroll
+      white-space: nowrap; // prevent wrapping
+      padding-bottom: 10px; // optional, space for scrollbar
+
+      &::-webkit-scrollbar {
+        height: 6px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: $accent-color;
+        border-radius: 3px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+
+      // Each tab
+      &__tab {
+        flex: 0 0 auto; // do not shrink
+        cursor: pointer;
+      }
+    }
+
+    // Optional: Tab content container
+    &__content {
+      margin-top: 20px;
     }
   }
 }
