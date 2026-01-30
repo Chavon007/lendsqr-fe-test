@@ -34,10 +34,10 @@ const mockUser: User = {
   email: "johndoe@example.com",
   phoneNumber: "(879) 450-3204",
   bvn: "83840382360",
-  status: "Active",       // matches UserStatus
+  status: "Active",
   tier: 3,
   accountBalance: "₦200,000.00",
-  accountNumber: 1234567890, // number, not string
+  accountNumber: "1234567890", 
   bankName: "GTBank",
   personalInfo: {
     maritalStatus: "Single",
@@ -51,7 +51,7 @@ const mockUser: User = {
     duration: "2 years",
     officeEmail: "johndoe@company.com",
     monthlyIncome: "₦200,000.00",
-    loanRepayment: "₦50,000.00" // string, not number
+    loanRepayment: "₦50,000.00"
   },
   socials: {
     twitter: "@johndoe",
