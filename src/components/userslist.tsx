@@ -2,7 +2,7 @@ import type { User } from "../types/user";
 import { fetchUsers } from "../services/userServices";
 import { IoFilterOutline } from "react-icons/io5";
 import { useState, useEffect } from "react";
-import { IoMdArrowDropdown } from "react-icons/io";
+// import { IoMdArrowDropdown } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { GrFormPrevious, GrFormNext } from "react-icons/gr";
 import "../styles/userTable.scss";
@@ -52,20 +52,36 @@ const filterFields = [
   },
 ];
 
+interface FilterValues {
+  organization: string;
+  username: string;
+  email: string;
+  phoneNumber: string;
+  status: string;
+}
+
 function Users() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [users, setUsers] = useState<User[]>([]);
+  const [filteredUsers, setFilteredUsers] = useState<User[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [showFilterModal, setShowFilterModal] = useState(false);
-
-  const usersPerPage = 10;
+  const [usersPerPage, setUsersPerPage] = useState(10);
+  const [filterValues, setFilterValues] = useState<FilterValues>({
+    organization: "",
+    username: "",
+    email: "",
+    phoneNumber: "",
+    status: "",
+  });
 
   useEffect(() => {
     const loadUsers = async () => {
       try {
         const data = await fetchUsers();
         setUsers(data);
+        setFilteredUsers(data);
       } catch (err) {
         console.error(err);
       } finally {
@@ -75,15 +91,101 @@ function Users() {
     loadUsers();
   }, []);
 
+  const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFilterValues((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleFilterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    let filtered = users;
+
+    // Apply filters
+    if (filterValues.organization) {
+      filtered = filtered.filter((user) =>
+        user.organization.toLowerCase().includes(filterValues.organization.toLowerCase())
+      );
+    }
+
+    if (filterValues.username) {
+      filtered = filtered.filter((user) =>
+        user.username.toLowerCase().includes(filterValues.username.toLowerCase())
+      );
+    }
+
+    if (filterValues.email) {
+      filtered = filtered.filter((user) =>
+        user.email.toLowerCase().includes(filterValues.email.toLowerCase())
+      );
+    }
+
+    if (filterValues.phoneNumber) {
+      filtered = filtered.filter((user) =>
+        user.phoneNumber.includes(filterValues.phoneNumber)
+      );
+    }
+
+    if (filterValues.status) {
+      filtered = filtered.filter((user) =>
+        user.status.toLowerCase() === filterValues.status.toLowerCase()
+      );
+    }
+
+    setFilteredUsers(filtered);
+    setCurrentPage(1); // Reset to first page after filtering
+    setShowFilterModal(false);
+  };
+
+  const handleResetFilter = () => {
+    setFilterValues({
+      organization: "",
+      username: "",
+      email: "",
+      phoneNumber: "",
+      status: "",
+    });
+    setFilteredUsers(users);
+    setCurrentPage(1);
+    setShowFilterModal(false);
+  };
+
   if (loading) {
     return <p>Loading users...</p>;
   }
 
   // Pagination
-  const totalUser = users.length;
+  const totalUser = filteredUsers.length;
   const totalPages = Math.ceil(totalUser / usersPerPage);
   const startIndex = (currentPage - 1) * usersPerPage;
-  const currentUsers = users.slice(startIndex, startIndex + usersPerPage);
+  const currentUsers = filteredUsers.slice(startIndex, startIndex + usersPerPage);
+
+  // Generate pagination numbers: 1, 2, 3, ..., last two pages
+  const getPaginationNumbers = () => {
+    const pages = [];
+    
+    if (totalPages <= 5) {
+      // Show all pages if total is 5 or less
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      // Show 1, 2, 3, ..., second-to-last, last
+      pages.push(1, 2, 3);
+      if (totalPages > 4) {
+        pages.push('...');
+      }
+      if (totalPages > 3) {
+        pages.push(totalPages - 1);
+      }
+      pages.push(totalPages);
+    }
+    
+    return pages;
+  };
 
   return (
     <div className="user-table">
@@ -134,16 +236,17 @@ function Users() {
           <select
             className="user-table__pagination-select"
             value={usersPerPage}
-            disabled
+            onChange={(e) => {
+              setUsersPerPage(Number(e.target.value));
+              setCurrentPage(1); // Reset to first page when changing items per page
+            }}
           >
-            <option className="pagination-option" value={20}>
-              20
-            </option>
-            <span className="user-table__pagination-icon">
-              <IoMdArrowDropdown />
-            </span>
+            <option value={10}>10</option>
+            <option value={20}>20</option>
+            <option value={50}>50</option>
+            <option value={100}>100</option>
           </select>
-          <p className="user-table__pagination-text1">Out of {totalUser}</p>
+          <p className="user-table__pagination-text1">out of {totalUser}</p>
         </div>
 
         <div className="user-table__pagination-controls">
@@ -154,17 +257,25 @@ function Users() {
           >
             <GrFormPrevious className="pagination-btn-icon" />
           </button>
-          {Array.from({ length: totalPages }, (_, i) => i + 1)
-            .slice(0, 10)
-            .map((page, index) => (
+          
+          {getPaginationNumbers().map((page, index) => 
+            page === '...' ? (
+              <span key={`ellipsis-${index}`} className="user-table__pagination-ellipsis">
+                ...
+              </span>
+            ) : (
               <p
                 key={index}
-                className="user-table__pagination-btn-num"
-                onClick={() => setCurrentPage(page)}
+                className={`user-table__pagination-btn-num ${
+                  currentPage === page ? 'user-table__pagination-btn-num--active' : ''
+                }`}
+                onClick={() => setCurrentPage(page as number)}
               >
                 {page}
               </p>
-            ))}
+            )
+          )}
+          
           <button
             className="user-table__pagination-btn"
             disabled={currentPage === totalPages}
@@ -184,6 +295,7 @@ function Users() {
           <form
             className="user-table__filter"
             onClick={(e) => e.stopPropagation()}
+            onSubmit={handleFilterSubmit}
           >
             {filterFields.map((field) => (
               <div key={field.name} className="user-table__filter-field">
@@ -197,6 +309,8 @@ function Users() {
                     type={field.inputType}
                     name={field.name}
                     placeholder={field.placeholder}
+                    value={filterValues[field.name as keyof FilterValues]}
+                    onChange={handleFilterChange}
                   />
                 )}
 
@@ -204,8 +318,10 @@ function Users() {
                   <select
                     className="user-table__filter-select"
                     name={field.name}
+                    value={filterValues[field.name as keyof FilterValues]}
+                    onChange={handleFilterChange}
                   >
-                    <option value=""> Select</option>
+                    <option value="">Select</option>
                     {field.options?.map((option) => (
                       <option key={option} value={option}>
                         {option}
@@ -220,7 +336,7 @@ function Users() {
               <button
                 type="button"
                 className="user-table__filter-reset"
-                onClick={() => setShowFilterModal(false)}
+                onClick={handleResetFilter}
               >
                 Reset
               </button>

@@ -4,6 +4,7 @@ $primary-color: #213f7d;
 $secondary-color: #545f7d;
 $accent-color: #39cdcc;
 $border-color: rgba(84, 95, 125, 0.15);
+$active-bg: #eaf3ff; // light blue background for active items
 
 * {
   margin: 0;
@@ -22,7 +23,6 @@ $border-color: rgba(84, 95, 125, 0.15);
   overflow-y: auto;
 
   &__container {
-   
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -30,9 +30,9 @@ $border-color: rgba(84, 95, 125, 0.15);
     padding: 40px 10px 20px 10px;
   }
 
+  /* Switch Organization */
   &__switch {
-    //  background: red;
-     width: 206px;
+    width: 206px;
     display: flex;
     align-items: center;
     text-decoration: none;
@@ -69,33 +69,36 @@ $border-color: rgba(84, 95, 125, 0.15);
     color: $accent-color;
   }
 
+  /* Dashboard */
   &__dashboard {
     display: flex;
     align-items: center;
     text-decoration: none;
     gap: 10px;
-    padding: 10px 0;
+    padding: 10px;
     cursor: pointer;
+    border-radius: 4px;
     transition: all 0.2s;
 
     &:hover {
       opacity: 0.8;
     }
+
+    &-icon {
+      font-size: 16px;
+      color: $secondary-color;
+    }
+
+    &-text {
+      font-family: "Work Sans", sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 19px;
+      color: $secondary-color;
+    }
   }
 
-  &__dashboard-icon {
-    font-size: 16px;
-    color: $primary-color;
-  }
-
-  &__dashboard-text {
-    font-family: "Work Sans", sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 19px;
-    color: $primary-color;
-  }
-
+  /* Sidebar Section */
   &__section {
     display: flex;
     flex-direction: column;
@@ -112,35 +115,52 @@ $border-color: rgba(84, 95, 125, 0.15);
     margin-bottom: 10px;
   }
 
+  /* Sidebar Items */
   &__item {
     text-decoration: none;
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 10px 0;
+    padding: 10px;
     cursor: pointer;
+    border-radius: 4px;
     transition: all 0.2s;
 
     &:hover {
       opacity: 0.8;
     }
+
+    &-icon {
+      font-size: 16px;
+      width: 16px;
+      height: 16px;
+      color: $secondary-color;
+    }
+
+    &-text {
+      font-size: 16px;
+      font-family: "Work Sans", sans-serif;
+      font-weight: 400;
+      line-height: 19px;
+      color: $secondary-color;
+    }
   }
 
-  &__item-icon {
-    font-size: 16px;
-    width: 16px;
-    height: 16px;
-    color: $secondary-color;
+  /* Active state */
+  &__item--active,
+  &__dashboard.sidebar__item--active {
+    background-color: $active-bg;
+
+    .sidebar__item-text,
+    .sidebar__item-icon,
+    .sidebar__dashboard-text,
+    .sidebar__dashboard-icon {
+      color: $primary-color;
+      font-weight: 500;
+    }
   }
 
-  &__item-text {
-    font-size: 16px;
-    font-family: "Work Sans", sans-serif;
-    font-weight: 400;
-    line-height: 19px;
-    color: $secondary-color;
-  }
-
+  /* Sidebar Footer */
   &__footer {
     border-top: 1px solid $border-color;
     padding: 30px;
@@ -160,41 +180,49 @@ $border-color: rgba(84, 95, 125, 0.15);
     &:hover {
       opacity: 0.8;
     }
-  }
 
-  &__logout-icon {
-    font-size: 16px;
-    color: $secondary-color;
-  }
+    &-icon {
+      font-size: 16px;
+      color: $secondary-color;
+    }
 
-  &__logout-text {
-    font-family: "Work Sans", sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 19px;
-    color: $secondary-color;
+    &-text {
+      font-family: "Work Sans", sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 19px;
+      color: $secondary-color;
+    }
   }
 
   &__version {
     text-align: center;
-  }
 
-  &__version-text {
-    font-family: "Work Sans", sans-serif;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 14px;
-    color: $secondary-color;
+    &-text {
+      font-family: "Work Sans", sans-serif;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 14px;
+      color: $secondary-color;
+    }
   }
 }
 
+/* Responsive Styles */
 /* Small mobile devices */
 @media (max-width: 480px) {
-  
+  .sidebar {
+    width: 100%;
+    height: auto;
+  }
 }
 
 /* Larger mobile devices / tablets */
-@media (max-width: 768px) {}
+@media (max-width: 768px) {
+  .sidebar {
+    width: 250px;
+  }
+}
 
 /* Desktop */
 @media (min-width: 769px) {}

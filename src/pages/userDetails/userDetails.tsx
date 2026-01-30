@@ -1,13 +1,11 @@
 import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
-import General from "../components/general";
-import { useUser } from "../hooks/userDetails";
-import "../styles/useDetails.scss";
+import General from "../../components/general";
+import { useUser } from "../../hooks/userDetails";
+import "../../styles/useDetails.scss";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-
-
 
 const tabs = [
   "General Details",
@@ -69,19 +67,21 @@ function UserDetails() {
           <div className="user-details__tier">
             <h6 className="user-details__tier-label">User Tier</h6>
 
-           <p className="user-details__tier-value">
-  {[1, 2, 3].map((star) =>
-    star <= user.tier ? (
-      <AiFillStar key={star} color="#e9b200" size={16} />
-    ) : (
-      <AiOutlineStar key={star} color="#e0e0e0" size={16} />
-    )
-  )}
-</p>
+            <p className="user-details__tier-value">
+              {[1, 2, 3].map((star) =>
+                star <= user.tier ? (
+                  <AiFillStar key={star} color="#e9b200" size={16} />
+                ) : (
+                  <AiOutlineStar key={star} color="#e0e0e0" size={16} />
+                ),
+              )}
+            </p>
           </div>
 
           <div className="user-details__account">
-            <h6 className="user-details__balance">{user.accountBalance}</h6>
+            <h6 className="user-details__balance"> ₦{parseFloat(user.accountBalance.replace(/[^0-9.]+/g, "")).toLocaleString("en-NG", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2, })}</h6>
             <p className="user-details__account-info">
               {user.accountNumber}/{user.bankName}
             </p>
@@ -95,7 +95,9 @@ function UserDetails() {
               key={t}
               onClick={() => setActiveTab(t)}
               className={`user-details__tab ${
-                activeTab === t ? "user-details__tab--active" : "user-details__tab--noactive"
+                activeTab === t
+                  ? "user-details__tab--active"
+                  : "user-details__tab--noactive"
               }`}
             >
               {t}
@@ -107,7 +109,6 @@ function UserDetails() {
       {/* Tab content */}
       <div className="user-details__content">
         {activeTab === "General Details" && <General user={user} />}
-       
       </div>
     </div>
   );

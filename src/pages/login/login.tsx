@@ -1,11 +1,11 @@
 import { useState } from "react";
-import type { loginDetails } from "../types/auth";
+import type { loginDetails } from "../../types/auth";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import logo from "../assets/Union.png";
-import leadsqr from "../assets/lendsqr.png";
-import sigin from "../assets/sigin.png";
-import "../styles/login.scss";
+import logo from "../../assets/Union.png"
+import leadsqr from "../../assets/lendsqr.png";
+import sigin from "../../assets/sigin.png";
+import "../../styles/login.scss";
 
 function Login() {
   const [formdata, setFormdata] = useState<loginDetails>({

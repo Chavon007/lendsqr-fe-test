@@ -1,7 +1,7 @@
-import UserCard from "../components/card";
-import Users from "../components/userslist";
+import UserCard from "../../components/card";
+import Users from "../../components/userslist";
 
-import"../styles/mainUser.scss"
+import "../../styles/mainUser.scss";
 
 function MainUsers() {
   return (
