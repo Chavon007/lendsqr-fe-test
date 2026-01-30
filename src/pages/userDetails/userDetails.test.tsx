@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import UserDetails from "../userDetails/userDetails";
 import { vi } from "vitest";
+import type { User } from "../../types/user";
 
 // Mock the userServices module
 vi.mock("../../services/userServices", () => ({
@@ -25,7 +26,7 @@ vi.mock("react-icons/ai", () => ({
   AiOutlineStar: () => <span>OutlineStar</span>,
 }));
 
-const mockUser = {
+const mockUser: User = {
   id: "1",
   organization: "Lendstar",
   fullName: "John Doe",
@@ -33,10 +34,10 @@ const mockUser = {
   email: "johndoe@example.com",
   phoneNumber: "(879) 450-3204",
   bvn: "83840382360",
-  status: "Active",
+  status: "Active",       // matches UserStatus
   tier: 3,
   accountBalance: "₦200,000.00",
-  accountNumber: "1234567890",
+  accountNumber: 1234567890, // number, not string
   bankName: "GTBank",
   personalInfo: {
     maritalStatus: "Single",
@@ -50,7 +51,7 @@ const mockUser = {
     duration: "2 years",
     officeEmail: "johndoe@company.com",
     monthlyIncome: "₦200,000.00",
-    loanRepayment: 50000
+    loanRepayment: "₦50,000.00" // string, not number
   },
   socials: {
     twitter: "@johndoe",
@@ -68,6 +69,7 @@ const mockUser = {
   dateJoined: "Nov 14, 2024 02:29 AM",
   gender: "Male"
 };
+
 
 test("renders User Details page", async () => {
   const { getUserFromStorage } = await import("../../services/userServices");
