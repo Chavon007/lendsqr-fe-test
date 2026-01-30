@@ -32,11 +32,11 @@ const mockUser = {
   username: "johndoe",
   email: "johndoe@example.com",
   phoneNumber: "(879) 450-3204",
-  bvn: 83840382360,
+  bvn: "83840382360",
   status: "Active",
   tier: 3,
   accountBalance: "₦200,000.00",
-  accountNumber: 1234567890,
+  accountNumber: "1234567890",
   bankName: "GTBank",
   personalInfo: {
     maritalStatus: "Single",

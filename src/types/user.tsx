@@ -19,7 +19,7 @@ export interface User {
 
   personalInfo: {
     maritalStatus: string;
-    children: string;
+    children: number;
     residenceType: string;
   };
 
