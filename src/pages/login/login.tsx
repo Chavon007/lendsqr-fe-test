@@ -26,33 +26,36 @@ function Login() {
     }
   }, [navigate]);
 
-  const handleSumbit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
-    setSuccess("");
+const handleSumbit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setError("");
+  setSuccess("");
 
-    if (!formdata.email || !formdata.password) {
-      setError("Please fill all required fields");
-      setLoading(false);
-      return;
-    }
+  if (!formdata.email || !formdata.password) {
+    setError("Please fill all required fields");
+    return;
+  }
 
-    try {
-      setSuccess("Login successful");
-      localStorage.setItem("isAuthenticated", "true");
-      localStorage.setItem("userEmail", formdata.email);
-      setLoading(false);
+  setLoading(true); 
 
-      setTimeout(() => {
-        navigate("/users");
-      }, 1000);
-    } catch (err) {
-      setError("Can't login now");
-      setLoading(false);
-      throw err;
-    }
-  };
+  try {
+    
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    setSuccess("Login successful");
+    localStorage.setItem("isAuthenticated", "true");
+    localStorage.setItem("userEmail", formdata.email);
+
+    setTimeout(() => {
+      navigate("/users");
+    }, 1000);
+  } catch (err) {
+    setError("Can't login now");
+    throw err;
+  } finally {
+    setLoading(false); 
+  }
+};
 
   const togglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);

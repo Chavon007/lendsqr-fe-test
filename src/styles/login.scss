@@ -201,7 +201,7 @@ $border-color: #545f7d26;
       width: 100%;
 
       .image {
-        display: none; // hide image on mobile
+        display: none; 
       }
 
       .logo {
@@ -238,7 +238,7 @@ $border-color: #545f7d26;
   }
 }
 
-/* Larger mobile devices / tablets */
+/*   tablets */
 @media (max-width: 768px) {
   .login {
     flex-direction: column;
@@ -247,7 +247,7 @@ $border-color: #545f7d26;
       width: 100%;
 
       .image {
-        display: none; // hide image on tablets too
+        display: none; 
       }
     }
 
@@ -288,7 +288,7 @@ $border-color: #545f7d26;
       display: flex;
 
       .image {
-        display: block; // ensure image shows on desktop
+        display: block; 
       }
     }
   }

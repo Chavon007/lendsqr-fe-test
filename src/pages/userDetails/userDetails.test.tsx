@@ -4,7 +4,7 @@ import UserDetails from "../userDetails/userDetails";
 import { vi } from "vitest";
 import type { User } from "../../types/user";
 
-// Mock the userServices module
+
 vi.mock("../../services/userServices", () => ({
   fetchUsers: vi.fn(),
   getUserFromStorage: vi.fn(),
@@ -12,7 +12,7 @@ vi.mock("../../services/userServices", () => ({
   getUserById: vi.fn(),
 }));
 
-// Mock react-icons
+
 vi.mock("react-icons/io", () => ({
   IoIosArrowRoundBack: () => <span>BackIcon</span>,
 }));
@@ -74,7 +74,7 @@ const mockUser: User = {
 test("renders User Details page", async () => {
   const { getUserFromStorage } = await import("../../services/userServices");
   
-  // Mock getUserFromStorage to return our mock user
+ 
   vi.mocked(getUserFromStorage).mockReturnValue(mockUser);
 
   render(
@@ -85,7 +85,7 @@ test("renders User Details page", async () => {
     </MemoryRouter>
   );
 
-  // Wait for the component to render with the mocked data
+ 
   const backLink = await screen.findByText(/back to users/i);
   expect(backLink).toBeInTheDocument();
 });

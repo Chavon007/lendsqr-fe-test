@@ -17,9 +17,9 @@ function SiderBar({ onLogout }: SidebarProps) {
 
   // Handle logout click
   const handleLogout = (e: React.MouseEvent) => {
-    e.preventDefault(); // Prevent navigation
+    e.preventDefault(); 
     if (onLogout) {
-      onLogout(); // Call the logout function passed from parent
+      onLogout(); 
     }
   };
 

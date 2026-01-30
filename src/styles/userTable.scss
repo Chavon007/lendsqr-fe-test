@@ -198,7 +198,6 @@ $secondary-color: #545f7d;
     color: $primary-color;
     cursor: pointer;
     appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23213f7d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
     background-repeat: no-repeat;
     background-position: right 8px center;
     background-size: 14px;
@@ -347,11 +346,9 @@ $secondary-color: #545f7d;
     color: $secondary-color;
     background-color: #ffffff;
     cursor: pointer;
-    appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-    background-repeat: no-repeat;
-    background-position: right 16px center;
-    background-size: 16px;
+   
+
+
 
     &:focus {
       outline: none;
@@ -404,9 +401,7 @@ $secondary-color: #545f7d;
   }
 }
 
-/* =========================
-   MOBILE & TABLET STYLES
-========================= */
+
 
 /* Small mobile devices */
 @media (max-width: 480px) {
@@ -415,12 +410,12 @@ $secondary-color: #545f7d;
 
     &__container {
       position: relative;
-      overflow-x: scroll; /* IMPORTANT: use scroll instead of auto */
-      overflow-y: scroll; /* Changed to scroll for consistent scrollbar */
+      overflow-x: scroll; 
+      overflow-y: scroll;
       max-height: 65vh;
-      -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+      -webkit-overflow-scrolling: touch; 
 
-      /* Add gradient shadow on right to indicate more content */
+     
       &::after {
         content: "";
         position: absolute;
@@ -433,7 +428,7 @@ $secondary-color: #545f7d;
           rgba(255, 255, 255, 0.9),
           transparent
         );
-        pointer-events: none; /* This ensures it doesn't block scrolling */
+        pointer-events: none; 
         z-index: 1;
       }
     }
@@ -450,7 +445,7 @@ $secondary-color: #545f7d;
       font-size: 13px;
       white-space: nowrap;
     }
-    
+
     &__status {
       width: 80px;
       display: flex;
@@ -492,12 +487,12 @@ $secondary-color: #545f7d;
 
     &__container {
       position: relative;
-      overflow-x: scroll; /* IMPORTANT: use scroll instead of auto */
-      overflow-y: scroll; /* Changed from auto to scroll for consistent scrollbar */
+      overflow-x: scroll;
+      overflow-y: scroll;
       max-height: 70vh;
-      -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+      -webkit-overflow-scrolling: touch; 
 
-      /* Add gradient shadow on right to indicate more content */
+      
       &::after {
         content: "";
         position: absolute;
@@ -510,13 +505,13 @@ $secondary-color: #545f7d;
           rgba(255, 255, 255, 0.9),
           transparent
         );
-        pointer-events: none; /* This ensures it doesn't block scrolling */
+        pointer-events: none; 
         z-index: 1;
       }
     }
 
     &__table {
-      min-width: 1200px; /* Increased to ensure horizontal scroll is needed */
+      min-width: 1200px; 
     }
 
     &__header {

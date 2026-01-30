@@ -324,9 +324,7 @@ $secondary-color: #545f7d;
   }
 }
 
-/* =========================
-   MOBILE STYLES
-========================= */
+
 
 /* Small mobile devices */
 @media (max-width: 480px) {
@@ -436,7 +434,7 @@ $secondary-color: #545f7d;
   }
 }
 
-/* Larger mobile devices / tablets */
+/* tablets */
 @media (min-width: 481px) and (max-width: 768px) {
   .user-details {
     padding: 0 20px;
@@ -492,16 +490,16 @@ $secondary-color: #545f7d;
       flex-wrap: wrap; 
     }
 
-    // Profile section
+    
     &__pro {
       display: flex;
-      flex-wrap: nowrap; // keep profile info in one line
+      flex-wrap: nowrap; 
       gap: 20px;
       align-items: center;
       overflow: hidden;
     }
 
-    // Tier stars
+    
     &__tier {
       padding: 0 40px;
       display: flex;
@@ -509,13 +507,13 @@ $secondary-color: #545f7d;
       align-items: center;
     }
 
-    // Tabs
+  
     &__tabs {
-      display: flex; // allow gap to work
+      display: flex; 
       gap: 14px;
-      overflow-x: auto; // enable horizontal scroll
-      white-space: nowrap; // prevent wrapping
-      padding-bottom: 10px; // optional, space for scrollbar
+      overflow-x: auto; 
+      white-space: nowrap; 
+      padding-bottom: 10px; 
 
       &::-webkit-scrollbar {
         height: 6px;
@@ -530,14 +528,14 @@ $secondary-color: #545f7d;
         background: #f1f1f1;
       }
 
-      // Each tab
+      
       &__tab {
-        flex: 0 0 auto; // do not shrink
+        flex: 0 0 auto; 
         cursor: pointer;
       }
     }
 
-    // Optional: Tab content container
+    
     &__content {
       margin-top: 20px;
     }
