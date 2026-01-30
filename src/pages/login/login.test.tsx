@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import Login from "./Login";
+import Login from "../login/login";
 
 test("renders email and password inputs", () => {
   render(<BrowserRouter><Login /></BrowserRouter>);

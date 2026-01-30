@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import Users from "./Users";
+import MainUsers from "./users";
 
 test("renders Users table", () => {
-  render(<BrowserRouter><Users /></BrowserRouter>);
+  render(<BrowserRouter><MainUsers /></BrowserRouter>);
   expect(screen.getByText(/loading users/i)).toBeInTheDocument();
 });

@@ -27,6 +27,7 @@ $secondary-color: #545f7d;
     /* Scrollbar styling for webkit browsers (Chrome, Safari, Edge) */
     &::-webkit-scrollbar {
       height: 12px;
+      width: 12px;
     }
 
     &::-webkit-scrollbar-track {
@@ -255,10 +256,21 @@ $secondary-color: #545f7d;
       font-weight: 500;
     }
 
-    &.active {
+    &--active {
       color: $primary-color;
       font-weight: 600;
     }
+  }
+
+  &__pagination-ellipsis {
+    min-width: 24px;
+    height: 24px;
+    font-family: "Work Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: center;
+    color: $secondary-color;
   }
 
   &__filter-overlay {
@@ -404,7 +416,7 @@ $secondary-color: #545f7d;
     &__container {
       position: relative;
       overflow-x: scroll; /* IMPORTANT: use scroll instead of auto */
-      overflow-y: auto;
+      overflow-y: scroll; /* Changed to scroll for consistent scrollbar */
       max-height: 65vh;
       -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
 
@@ -438,6 +450,7 @@ $secondary-color: #545f7d;
       font-size: 13px;
       white-space: nowrap;
     }
+    
     &__status {
       width: 80px;
       display: flex;
@@ -480,7 +493,7 @@ $secondary-color: #545f7d;
     &__container {
       position: relative;
       overflow-x: scroll; /* IMPORTANT: use scroll instead of auto */
-      overflow-y: auto;
+      overflow-y: scroll; /* Changed from auto to scroll for consistent scrollbar */
       max-height: 70vh;
       -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
 
@@ -503,11 +516,23 @@ $secondary-color: #545f7d;
     }
 
     &__table {
-      min-width: 1000px;
+      min-width: 1200px; /* Increased to ensure horizontal scroll is needed */
+    }
+
+    &__header {
+      padding: 12px 10px;
     }
 
     &__cell {
       white-space: nowrap;
+      padding: 15px 10px;
+      font-size: 14px;
+    }
+
+    &__status {
+      width: 90px;
+      margin-top: 15px;
+      height: 28px;
     }
 
     &__pagination {
@@ -515,10 +540,20 @@ $secondary-color: #545f7d;
       align-items: flex-start;
       gap: 14px;
       height: auto;
+      margin: 20px 0;
+    }
+
+    &__pagination-info {
+      gap: 12px;
     }
 
     &__pagination-controls {
       gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    &__pagination-btn-num {
+      font-size: 14px;
     }
 
     &__filter {
@@ -531,29 +566,42 @@ $secondary-color: #545f7d;
 }
 
 /* Desktop */
-// @media (min-width: 769px) {
-//   .user-table {
-//     &__container {
-//       overflow: visible;
-//       max-height: none;
+@media (min-width: 891px) {
+  .user-table {
+    &__container {
+      overflow-x: visible;
+      overflow-y: visible;
+      max-height: none;
 
-//       &::after {
-//         display: none;
-//       }
-//     }
+      &::after {
+        display: none;
+      }
+    }
 
-//     &__table {
-//       min-width: unset;
-//     }
+    &__table {
+      min-width: unset;
+      table-layout: fixed;
+      width: 100%;
+    }
 
-//     &__pagination {
-//       flex-direction: row;
-//       align-items: center;
-//     }
+    &__cell {
+      padding: 15px 20px;
+    }
 
-//     &__filter {
-//       left: 120px;
-//       transform: none;
-//     }
-//   }
-// }
+    &__status {
+      margin-top: 20px;
+      width: 100px;
+      height: 32px;
+    }
+
+    &__pagination {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    &__filter {
+      left: 120px;
+      transform: none;
+    }
+  }
+}

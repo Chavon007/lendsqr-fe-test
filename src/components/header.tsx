@@ -6,8 +6,14 @@ import logo from "../assets/Union.png";
 import lendsqr from "../assets/lendsqr.png";
 import profile from "../assets/profile.png";
 import "../styles/header.scss";
-import { IoMdMenu } from "react-icons/io";
-function Header({onMenuClick}: {onMenuClick: () => void}) {
+import { IoMdMenu, IoMdClose } from "react-icons/io";
+
+interface HeaderProps {
+  onMenuClick: () => void;
+  isMenuOpen: boolean;
+}
+
+function Header({ onMenuClick, isMenuOpen }: HeaderProps) {
   return (
     <div className="header">
       {/* logo */}
@@ -44,13 +50,11 @@ function Header({onMenuClick}: {onMenuClick: () => void}) {
 
         <div className="notification__profile1">
           <div className="notification__image">
-            {" "}
             <img src={profile} alt="adedeji" className="notification__image1" />
           </div>
           <div className="notification__text">
-            {" "}
             <p className="notification__name">
-              <span  className="notification__name1">Adedeji</span>
+              <span className="notification__name1">Adedeji</span>
               <span className="notification__name2">
                 <IoMdArrowDropdown />
               </span>
@@ -59,10 +63,12 @@ function Header({onMenuClick}: {onMenuClick: () => void}) {
         </div>
       </div>
 
+      {/* Menu/Close toggle button */}
       <div className="menu" onClick={onMenuClick}>
-        <IoMdMenu/>
+        {isMenuOpen ? <IoMdClose /> : <IoMdMenu />}
       </div>
     </div>
   );
 }
+
 export default Header;

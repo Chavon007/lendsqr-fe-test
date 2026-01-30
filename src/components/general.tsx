@@ -6,54 +6,69 @@ type GeneralProps = {
 };
 
 const personalInfoFields = [
-  { label: "Full name", value: (u: User) => u.fullName },
-  { label: "Phone number", value: (u: User) => u.phoneNumber },
-  { label: "Email Address", value: (u: User) => u.email },
-  { label: "BVN", value: (u: User) => u.bvn },
-  { label: "Gender", value: (u: User) => u.gender },
-  { label: "Marital status", value: (u: User) => u.personalInfo.maritalStatus },
-  { label: "Children", value: (u: User) => u.personalInfo.children },
+  { label: "Full name", value: (u: User) => u.fullName ?? "—" },
+  { label: "Phone number", value: (u: User) => u.phoneNumber ?? "—" },
+  { label: "Email Address", value: (u: User) => u.email ?? "—" },
+  { label: "BVN", value: (u: User) => u.bvn ?? "—" },
+  { label: "Gender", value: (u: User) => u.gender ?? "—" },
+  {
+    label: "Marital status",
+    value: (u: User) => u.personalInfo?.maritalStatus ?? "—",
+  },
+  {
+    label: "Children",
+    value: (u: User) => u.personalInfo?.children ?? "—",
+  },
   {
     label: "Type of Residence",
-    value: (u: User) => u.personalInfo.residenceType,
+    value: (u: User) => u.personalInfo?.residenceType ?? "—",
   },
 ];
 
 const eduEmploy = [
   {
     label: "Level of Education",
-    value: (u: User) => u.educationEmployment.level,
+    value: (u: User) => u.educationEmployment?.level ?? "—",
   },
   {
     label: "Employment status",
-    value: (u: User) => u.educationEmployment.employmentStatus,
+    value: (u: User) => u.educationEmployment?.employmentStatus ?? "—",
   },
   {
     label: "Sector of employment",
-    value: (u: User) => u.educationEmployment.sector,
+    value: (u: User) => u.educationEmployment?.sector ?? "—",
   },
   {
     label: "Duration of employment",
-    value: (u: User) => u.educationEmployment.duration,
+    value: (u: User) => u.educationEmployment?.duration ?? "—",
   },
   {
     label: "Office email",
-    value: (u: User) => u.educationEmployment.officeEmail,
+    value: (u: User) => u.educationEmployment?.officeEmail ?? "—",
   },
   {
     label: "Monthly income",
-    value: (u: User) => u.educationEmployment.monthlyIncome,
+    value: (u: User) => u.educationEmployment?.monthlyIncome ?? "—",
   },
   {
     label: "Loan repayment",
-    value: (u: User) => u.educationEmployment.loanRepayment,
+    value: (u: User) => u.educationEmployment?.loanRepayment ?? "—",
   },
 ];
 
 const socials = [
-  { label: "Twitter", value: (u: User) => u.socials.twitter },
-  { label: "Facebook", value: (u: User) => u.socials.facebook },
-  { label: "Instagram", value: (u: User) => u.socials.instagram },
+  {
+    label: "Twitter",
+    value: (u: User) => u.socials?.twitter ?? "—",
+  },
+  {
+    label: "Facebook",
+    value: (u: User) => u.socials?.facebook ?? "—",
+  },
+  {
+    label: "Instagram",
+    value: (u: User) => u.socials?.instagram ?? "—",
+  },
 ];
 
 function General({ user }: GeneralProps) {
@@ -72,7 +87,9 @@ function General({ user }: GeneralProps) {
       </div>
 
       <div className="general__section-section1">
-        <h4 className="general__section-title">Education and Employment</h4>
+        <h4 className="general__section-title">
+          Education and Employment
+        </h4>
         <div className="general__section general__section--employment">
           {eduEmploy.map((e) => (
             <div key={e.label} className="general__field">
@@ -98,26 +115,26 @@ function General({ user }: GeneralProps) {
       <div className="general__section-section1">
         <h4 className="general__section-title">Guarantors</h4>
         <div className="general__guarantors">
-          {user.guarantors.map((g, index) => (
+          {(user.guarantors ?? []).map((g, index) => (
             <div key={index} className="general__guarantor">
               <div className="general__field">
                 <h6 className="general__label">Full name</h6>
-                <p className="general__value">{g.fullName}</p>
+                <p className="general__value">{g.fullName ?? "—"}</p>
               </div>
 
               <div className="general__field">
                 <h6 className="general__label">Phone number</h6>
-                <p className="general__value">{g.phoneNumber}</p>
+                <p className="general__value">{g.phoneNumber ?? "—"}</p>
               </div>
 
               <div className="general__field">
                 <h6 className="general__label">Email Address</h6>
-                <p className="general__value">{g.email}</p>
+                <p className="general__value">{g.email ?? "—"}</p>
               </div>
 
               <div className="general__field">
                 <h6 className="general__label">Relationship</h6>
-                <p className="general__value">{g.relationship}</p>
+                <p className="general__value">{g.relationship ?? "—"}</p>
               </div>
             </div>
           ))}

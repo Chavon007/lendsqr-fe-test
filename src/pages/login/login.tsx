@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { loginDetails } from "../../types/auth";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import logo from "../../assets/Union.png"
+import logo from "../../assets/Union.png";
 import leadsqr from "../../assets/lendsqr.png";
 import sigin from "../../assets/sigin.png";
 import "../../styles/login.scss";
@@ -15,7 +15,16 @@ function Login() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+
+  // Redirect to users page if already logged in
+  useEffect(() => {
+    const isAuthenticated = localStorage.getItem("isAuthenticated") === "true";
+    if (isAuthenticated) {
+      navigate("/users");
+    }
+  }, [navigate]);
 
   const handleSumbit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -28,38 +37,46 @@ function Login() {
       setLoading(false);
       return;
     }
+
     try {
       setSuccess("Login successful");
       localStorage.setItem("isAuthenticated", "true");
+      localStorage.setItem("userEmail", formdata.email);
       setLoading(false);
+
       setTimeout(() => {
         navigate("/users");
       }, 1000);
     } catch (err) {
       setError("Can't login now");
-      throw err;
-    } finally {
       setLoading(false);
+      throw err;
     }
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
   };
 
   return (
     <div className="login">
       <div className="logo_text">
         <div className="logo">
-          <img src={logo} alt={logo} className="lendsqr_logo" />
-          <img src={leadsqr} alt={leadsqr} className="lendsqr__brand" />
+          <img src={logo} alt="logo" className="lendsqr_logo" />
+          <img src={leadsqr} alt="lendsqr" className="lendsqr__brand" />
         </div>
 
         <div className="image">
           <img src={sigin} alt="login illustration" className="mainimage" />
         </div>
       </div>
+
       {/* login form */}
       <div className="login_form-container">
         <div className="login_form1">
           <h2 className="login__title">Welcome</h2>
           <p className="login__subtitle">Enter details to login.</p>
+
           <form onSubmit={handleSumbit} className="login__form">
             <input
               className="login__input"
@@ -73,7 +90,7 @@ function Login() {
 
             <div className="input">
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 className="login__input1"
                 value={formdata.password}
                 placeholder="Password"
@@ -81,15 +98,17 @@ function Login() {
                   setFormdata({ ...formdata, password: e.target.value })
                 }
               />
-              <p className="login__show">SHOW</p>
+              <p className="login__show" onClick={togglePasswordVisibility}>
+                {showPassword ? "HIDE" : "SHOW"}
+              </p>
             </div>
 
-            <Link className="login__forgot" to="/">
+            <Link className="login__forgot" to="/forgot-password">
               Forgot PASSWORD?
             </Link>
 
-            <button className="login__button">
-              {loading ? "login in..." : "LOG IN"}
+            <button type="submit" className="login__button" disabled={loading}>
+              {loading ? "Logging in..." : "LOG IN"}
             </button>
 
             {error && <p className="login__error">{error}</p>}
@@ -100,4 +119,5 @@ function Login() {
     </div>
   );
 }
+
 export default Login;

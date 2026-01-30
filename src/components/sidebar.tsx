@@ -1,13 +1,27 @@
 import { FaBriefcase, FaHome } from "react-icons/fa";
 import { Businesses, settings, customers } from "../data/sidebarData";
 import { MdOutlineLogout } from "react-icons/md";
-import { NavLink } from "react-router-dom"; // use NavLink instead of Link
+import { NavLink } from "react-router-dom";
 import { RiArrowDropDownFill } from "react-icons/ri";
 import "../styles/sidebar.scss";
 
-function SiderBar() {
+// Add this interface
+interface SidebarProps {
+  onLogout?: () => void;
+}
+
+// Update function signature to accept props
+function SiderBar({ onLogout }: SidebarProps) {
   // Optional: active style
   const activeClass = "sidebar__item sidebar__item--active";
+
+  // Handle logout click
+  const handleLogout = (e: React.MouseEvent) => {
+    e.preventDefault(); // Prevent navigation
+    if (onLogout) {
+      onLogout(); // Call the logout function passed from parent
+    }
+  };
 
   return (
     <div className="sidebar">
@@ -97,12 +111,16 @@ function SiderBar() {
 
       {/* Logout */}
       <div className="sidebar__footer">
-        <NavLink to="/logout" className="sidebar__logout">
+        {/* Changed from NavLink to button with onClick handler */}
+        <button 
+          className="sidebar__logout" 
+          onClick={handleLogout}
+        >
           <p className="sidebar__logout-icon">
             <MdOutlineLogout />
           </p>
           <h6 className="sidebar__logout-text">Logout</h6>
-        </NavLink>
+        </button>
 
         <div className="sidebar__version">
           <small className="sidebar__version-text">v1.2.0</small>
