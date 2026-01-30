@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [
@@ -12,13 +12,14 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',
-    setupFiles: './vitest.setup.ts',
+    setupFiles: './vitest.setup.ts', // ✅ load jest-dom matchers
     include: ['src/**/*.test.tsx'],
-    // THIS IS IMPORTANT:
+    // optional: SCSS/image mocks (you can remove if handled in setup file)
     alias: {
-      '\\.scss$': 'identity-obj-proxy', // mocks scss imports
-      '\\.png$': 'identity-obj-proxy',  // mocks image imports
+      '\\.scss$': 'identity-obj-proxy',
+      '\\.png$': 'identity-obj-proxy',
       '\\.jpg$': 'identity-obj-proxy',
+      '\\.svg$': 'identity-obj-proxy',
     },
   },
-})
+});
