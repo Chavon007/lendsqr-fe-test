@@ -6,7 +6,8 @@ import logo from "../assets/Union.png";
 import lendsqr from "../assets/lendsqr.png";
 import profile from "../assets/profile.png";
 import "../styles/header.scss";
-function Header() {
+import { IoMdMenu } from "react-icons/io";
+function Header({onMenuClick}: {onMenuClick: () => void}) {
   return (
     <div className="header">
       {/* logo */}
@@ -14,6 +15,7 @@ function Header() {
         <img src={logo} alt="logo" className="logo__icon" />
         <img src={lendsqr} alt="lendsqr" className="logo__lendsqr" />
       </div>
+
       {/* search */}
       <div className="search">
         <div className="search__border">
@@ -55,6 +57,10 @@ function Header() {
             </p>
           </div>
         </div>
+      </div>
+
+      <div className="menu" onClick={onMenuClick}>
+        <IoMdMenu/>
       </div>
     </div>
   );

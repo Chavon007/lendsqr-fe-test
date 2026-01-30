@@ -187,3 +187,14 @@ $border-color: rgba(84, 95, 125, 0.15);
     color: $secondary-color;
   }
 }
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  
+}
+
+/* Larger mobile devices / tablets */
+@media (max-width: 768px) {}
+
+/* Desktop */
+@media (min-width: 769px) {}

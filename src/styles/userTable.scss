@@ -23,6 +23,29 @@ $secondary-color: #545f7d;
     background: #ffffff;
     border-radius: 4px;
     box-shadow: 3px 5px 20px 0px #0000000a;
+    
+    /* Scrollbar styling for webkit browsers (Chrome, Safari, Edge) */
+    &::-webkit-scrollbar {
+      height: 12px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 4px;
+      
+      &:hover {
+        background: #555;
+      }
+    }
+
+    /* Scrollbar styling for Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
   }
 
   &__table {
@@ -328,6 +351,152 @@ $secondary-color: #545f7d;
 
     &:hover {
       background-color: #2eb8b7;
+    }
+  }
+}
+
+/* =========================
+   MOBILE & TABLET STYLES
+========================= */
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .user-table {
+    width: 100%;
+
+    &__container {
+      position: relative;
+      overflow-x: scroll; /* IMPORTANT: use scroll instead of auto */
+      overflow-y: auto;
+      max-height: 65vh;
+      -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+      
+      /* Add gradient shadow on right to indicate more content */
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 30px;
+        background: linear-gradient(to left, rgba(255, 255, 255, 0.9), transparent);
+        pointer-events: none; /* This ensures it doesn't block scrolling */
+        z-index: 1;
+      }
+    }
+
+    &__table {
+      min-width: 900px;
+    }
+
+    &__header-text {
+      font-size: 11px;
+    }
+
+    &__cell {
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    &__pagination {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      height: auto;
+    }
+
+    &__pagination-controls {
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    &__filter {
+      width: 90%;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 60px;
+    }
+  }
+}
+
+/* Larger mobile devices / tablets */
+@media (max-width: 768px) {
+  .user-table {
+    width: 100%;
+
+    &__container {
+      position: relative;
+      overflow-x: scroll; /* IMPORTANT: use scroll instead of auto */
+      overflow-y: auto;
+      max-height: 70vh;
+      -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+      
+      /* Add gradient shadow on right to indicate more content */
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 30px;
+        background: linear-gradient(to left, rgba(255, 255, 255, 0.9), transparent);
+        pointer-events: none; /* This ensures it doesn't block scrolling */
+        z-index: 1;
+      }
+    }
+
+    &__table {
+      min-width: 1000px;
+    }
+
+    &__cell {
+      white-space: nowrap;
+    }
+
+    &__pagination {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
+      height: auto;
+    }
+
+    &__pagination-controls {
+      gap: 10px;
+    }
+
+    &__filter {
+      width: 320px;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 70px;
+    }
+  }
+}
+
+/* Desktop */
+@media (min-width: 769px) {
+  .user-table {
+    &__container {
+      overflow: visible;
+      max-height: none;
+      
+      &::after {
+        display: none;
+      }
+    }
+
+    &__table {
+      min-width: unset;
+    }
+
+    &__pagination {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    &__filter {
+      left: 120px;
+      transform: none;
     }
   }
 }

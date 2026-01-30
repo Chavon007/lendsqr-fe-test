@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 import { GrFormPrevious, GrFormNext } from "react-icons/gr";
 import "../styles/userTable.scss";
+
 const headers = [
   "Organization",
   "Username",
@@ -80,11 +81,11 @@ function Users() {
   }
 
   // pagination
-
   const totalUser = users.length;
   const totalPages = Math.ceil(totalUser / usersPerPage);
   const startIndex = (currentPage - 1) * usersPerPage;
   const currentUsers = users.slice(startIndex, startIndex + usersPerPage);
+
   return (
     <div className="user-table">
       <div className="user-table__container">
@@ -172,7 +173,6 @@ function Users() {
       </div>
 
       {/* filter */}
-
       {showFilterModal && (
         <div
           className="user-table__filter-overlay"
